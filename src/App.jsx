@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login.jsx";
-import DashboardEstDoc from "./pages/DashboardEstDoc";
-import MisSolicitudes from "./pages/MisSolicitudes";
-import SugerirLibro from "./pages/SugerirLibro";
+import DashboardEstDoc from "./pages/DashboardEstDoc.jsx";
+import MisSolicitudes from "./pages/MisSolicitudes.jsx";
+import SugerirLibro from "./pages/SugerirLibro.jsx";
 
-import VistaCatalogo from "./componentes/VistaCatalogo";
-import VistaFavoritos from "./componentes/VistaFavoritos";
-import VistaSolicitudes from "./componentes/VistaSolicitudes";
-import DetalleRecurso from "./componentes/DetalleRecurso";
-import Admin from "./pages/admin/admin";
+import VistaCatalogo from "./componentes/VistaCatalogo.jsx";
+import VistaFavoritos from "./componentes/VistaFavoritos.jsx";
+import VistaSolicitudes from "./componentes/VistaSolicitudes.jsx";
+import DetalleRecurso from "./componentes/DetalleRecurso.jsx";
+import Admin from "./pages/admin/admin.jsx";
 
-import DashboardGestor from "./pages/gestor/DashboardGestor";
-import GestionarRecursosGestor from "./pages/gestor/GestionarRecursosGestor";
+import DashboardGestor from "./pages/gestor/DashboardGestor.jsx";
+import GestionarRecursosGestor from "./pages/gestor/GestionarRecursosGestor.jsx";
 
 function App() {
   return (
