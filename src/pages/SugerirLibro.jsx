@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/SugerirLibro.css";
+import "../styles/Sugerirlibro.css";
 
 import BarraSuperior from "../componentes/BarraSuperior";
 import BarraLateral from "../componentes/BarraLateral";
