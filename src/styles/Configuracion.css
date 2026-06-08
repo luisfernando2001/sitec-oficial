@@ -1,0 +1,1608 @@
+.config-page {
+  width: 100%;
+  color: #21152c;
+}
+
+.config-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  border-radius: 30px;
+  padding: 36px 42px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, rgba(247, 189, 56, 0.18), transparent 30%),
+    linear-gradient(135deg, #160b5f 0%, #36106f 45%, #8b0c50 100%);
+  box-shadow: 0 26px 60px rgba(38, 20, 83, 0.24);
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.config-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.055) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  opacity: 0.55;
+}
+
+.config-hero-info,
+.config-user-card {
+  position: relative;
+  z-index: 1;
+}
+
+.config-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f7bd38;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.config-eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  border-radius: 20px;
+  background: #f7bd38;
+}
+
+.config-hero h1 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.config-hero p {
+  margin: 0;
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.config-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.config-hero-tags span {
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 850;
+  background: rgba(255, 255, 255, 0.115);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.config-user-card {
+  border-radius: 24px;
+  padding: 22px;
+  min-height: 130px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.config-user-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f7bd38, #c97816);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 950;
+  border: 3px solid rgba(255, 255, 255, 0.22);
+}
+
+.config-user-card strong {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.config-user-card p {
+  margin: 0;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.config-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.config-tabs button {
+  min-height: 74px;
+  border: 1px solid #e8e1ef;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #5d4a68;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(55, 37, 82, 0.07);
+  transition: 0.22s ease;
+}
+
+.config-tabs button:hover {
+  transform: translateY(-2px);
+  color: #8e0d2d;
+}
+
+.config-tabs button.activo {
+  color: #8e0d2d;
+  background:
+    linear-gradient(90deg, rgba(166, 13, 46, 0.1), rgba(247, 189, 56, 0.08)),
+    #ffffff;
+  border-color: rgba(166, 13, 46, 0.22);
+  box-shadow: 0 20px 42px rgba(55, 37, 82, 0.13);
+}
+
+.tab-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  background: #f8f2f7;
+  border: 1px solid #eee2ec;
+  position: relative;
+}
+
+.config-tabs button.activo .tab-icon {
+  background: linear-gradient(135deg, #160b5f, #8e0d2d);
+  border-color: transparent;
+}
+
+.tab-icon::before,
+.tab-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.icon-preferencias::before,
+.icon-notificaciones::before,
+.icon-seguridad::before,
+.icon-privacidad::before {
+  border: 2px solid currentColor;
+  color: #8e0d2d;
+}
+
+.config-tabs button.activo .tab-icon::before,
+.config-tabs button.activo .tab-icon::after {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #ffffff;
+}
+
+.icon-preferencias::before {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  left: 8px;
+  top: 8px;
+}
+
+.icon-preferencias::after {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  left: 13px;
+  top: 13px;
+  background: #8e0d2d;
+}
+
+.icon-notificaciones::before {
+  width: 18px;
+  height: 20px;
+  border-radius: 9px 9px 5px 5px;
+  left: 8px;
+  top: 6px;
+}
+
+.icon-notificaciones::after {
+  width: 8px;
+  height: 2px;
+  left: 13px;
+  bottom: 6px;
+  background: #8e0d2d;
+}
+
+.icon-seguridad::before {
+  width: 18px;
+  height: 16px;
+  border-radius: 5px;
+  left: 8px;
+  bottom: 7px;
+}
+
+.icon-seguridad::after {
+  width: 11px;
+  height: 9px;
+  border: 2px solid #8e0d2d;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  left: 11px;
+  top: 6px;
+}
+
+.icon-privacidad::before {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  left: 8px;
+  top: 8px;
+}
+
+.icon-privacidad::after {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  left: 14px;
+  top: 14px;
+  background: #8e0d2d;
+}
+
+.config-panel {
+  background: #ffffff;
+  border: 1px solid #e8e1ef;
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 18px 40px rgba(55, 37, 82, 0.09);
+  margin-bottom: 24px;
+  animation: configPanelIn 0.25s ease both;
+}
+
+@keyframes configPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.config-panel-header {
+  margin-bottom: 22px;
+}
+
+.config-panel-header span {
+  display: block;
+  color: #a40d2e;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.config-panel-header h2 {
+  margin: 0 0 6px;
+  color: #21152c;
+  font-size: 26px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.config-panel-header p {
+  margin: 0;
+  color: #776c84;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.config-option-card {
+  min-height: 128px;
+  border: 1px solid #eee8f4;
+  border-radius: 20px;
+  background: #fbfaff;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 58px 1fr 180px;
+  gap: 16px;
+  align-items: center;
+  transition: 0.22s ease;
+}
+
+.config-option-card:hover,
+.config-list-item:hover,
+.config-security-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(164, 13, 46, 0.2);
+  box-shadow: 0 14px 26px rgba(55, 37, 82, 0.08);
+}
+
+.config-option-card h3,
+.config-list-item h3,
+.config-security-card h3,
+.config-reset-box h3 {
+  margin: 0 0 6px;
+  color: #21152c;
+  font-size: 16px;
+}
+
+.config-option-card p,
+.config-list-item p,
+.config-security-card p,
+.config-reset-box p {
+  margin: 0;
+  color: #7d718a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.config-option-card select {
+  height: 44px;
+  border: 1px solid #ded6e8;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 0 13px;
+  outline: none;
+  color: #2b1d38;
+  font-weight: 700;
+}
+
+.config-option-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: #fff0f4;
+  border: 1px solid #f1c8d2;
+  position: relative;
+}
+
+.config-option-icon::before {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  width: 22px;
+  height: 26px;
+  border-radius: 6px;
+  border: 2px solid #8e0d2d;
+  left: 16px;
+  top: 14px;
+}
+
+.config-list {
+  display: grid;
+  gap: 14px;
+}
+
+.config-list-item {
+  min-height: 92px;
+  border: 1px solid #eee8f4;
+  border-radius: 20px;
+  background: #fbfaff;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+  transition: 0.22s ease;
+}
+
+.config-toggle {
+  width: 56px;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: #ded6e8;
+  padding: 3px;
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.config-toggle span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(34, 21, 44, 0.18);
+  transition: 0.22s ease;
+}
+
+.config-toggle.on {
+  background: linear-gradient(135deg, #a40d2e, #7a0825);
+}
+
+.config-toggle.on span {
+  transform: translateX(26px);
+}
+
+.config-security-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 18px;
+}
+
+.config-security-card {
+  border: 1px solid #eee8f4;
+  border-radius: 20px;
+  background: #fbfaff;
+  padding: 20px;
+  transition: 0.22s ease;
+}
+
+.config-security-card.principal {
+  background:
+    linear-gradient(135deg, rgba(22, 11, 95, 0.04), rgba(164, 13, 46, 0.05)),
+    #fbfaff;
+}
+
+.security-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: #f1efff;
+  border: 1px solid #d7d0f2;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.security-icon::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 19px;
+  border: 2px solid #160b5f;
+  border-radius: 6px;
+  left: 17px;
+  bottom: 12px;
+}
+
+.security-icon::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 12px;
+  border: 2px solid #160b5f;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  left: 22px;
+  top: 13px;
+}
+
+.config-security-card button {
+  height: 43px;
+  border: none;
+  border-radius: 14px;
+  padding: 0 18px;
+  margin-top: 16px;
+  cursor: pointer;
+  font-weight: 900;
+  color: #2a1740;
+  background: linear-gradient(135deg, #f7bd38, #ffd977);
+  box-shadow: 0 12px 22px rgba(247, 189, 56, 0.22);
+}
+
+.config-security-card span {
+  display: block;
+  color: #a40d2e;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+
+.config-security-card strong {
+  display: block;
+  color: #21152c;
+  font-size: 16px;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.config-reset-box {
+  margin-top: 18px;
+  border-radius: 22px;
+  border: 1px solid #ead6dc;
+  background: #fff7f8;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+
+.config-reset-box button {
+  height: 43px;
+  border-radius: 14px;
+  border: 1px solid #e2b5c0;
+  background: #ffffff;
+  color: #a40d2e;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 0 18px;
+}
+
+/* MODAL */
+.config-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(12, 7, 35, 0.58);
+  backdrop-filter: blur(7px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.config-modal {
+  width: min(520px, 100%);
+  border-radius: 26px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #eadff0;
+  box-shadow: 0 30px 80px rgba(10, 6, 35, 0.35);
+  animation: configPanelIn 0.25s ease both;
+}
+
+.config-modal-header {
+  padding: 24px 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  background:
+    radial-gradient(circle at top left, rgba(247, 189, 56, 0.16), transparent 30%),
+    linear-gradient(135deg, #160b5f, #8b0c50);
+  color: #ffffff;
+}
+
+.config-modal-header span {
+  color: #f7bd38;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.config-modal-header h2 {
+  margin: 8px 0 0;
+  font-size: 27px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.config-modal-header button {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.13);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.config-modal-body {
+  padding: 24px 26px;
+  display: grid;
+  gap: 14px;
+}
+
+.config-modal-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #574a64;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.config-modal-body input {
+  width: 100%;
+  border: 1px solid #ded6e8;
+  background: #f8f6fb;
+  border-radius: 14px;
+  padding: 13px 14px;
+  outline: none;
+  color: #24182f;
+  font-size: 14px;
+}
+
+.config-modal-body input:focus {
+  border-color: #a40d2e;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(164, 13, 46, 0.08);
+}
+
+.config-modal-footer {
+  padding: 18px 26px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #eee8f4;
+}
+
+.config-modal-footer button {
+  height: 44px;
+  border-radius: 14px;
+  padding: 0 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.btn-config-cancelar {
+  background: #ffffff;
+  color: #756982;
+  border: 1px solid #ded6e8;
+}
+
+.btn-config-guardar {
+  border: none;
+  color: #2a1740;
+  background: linear-gradient(135deg, #f7bd38, #ffd977);
+  box-shadow: 0 12px 22px rgba(247, 189, 56, 0.24);
+}
+
+/* =========================================================
+   MEJORA VISUAL EXTRA - ESTADO DE CONFIGURACIÓN
+   ========================================================= */
+
+.config-status-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.config-status-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 128px;
+  border-radius: 24px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 16px;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e8e1ef;
+  box-shadow: 0 16px 34px rgba(55, 37, 82, 0.08);
+  transition: 0.24s ease;
+}
+
+.config-status-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px rgba(55, 37, 82, 0.13);
+}
+
+.config-status-card::after {
+  content: "";
+  position: absolute;
+  width: 115px;
+  height: 115px;
+  right: -44px;
+  top: -44px;
+  border-radius: 50%;
+  opacity: 0.13;
+}
+
+.status-active::after {
+  background: #14703d;
+}
+
+.status-secure::after {
+  background: #160b5f;
+}
+
+.status-sync::after {
+  background: #f7bd38;
+}
+
+.status-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.status-active .status-icon {
+  background: #edf8f1;
+  border: 1px solid #cbead7;
+}
+
+.status-secure .status-icon {
+  background: #f1efff;
+  border: 1px solid #d7d0f2;
+}
+
+.status-sync .status-icon {
+  background: #fff7df;
+  border: 1px solid #ead58e;
+}
+
+.status-icon::before,
+.status-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* Cuenta */
+.status-cuenta::before {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #14703d;
+  border-radius: 50%;
+  top: 12px;
+}
+
+.status-cuenta::after {
+  width: 28px;
+  height: 14px;
+  border: 2px solid #14703d;
+  border-radius: 16px 16px 6px 6px;
+  bottom: 10px;
+}
+
+/* Seguridad */
+.status-seguridad::before {
+  width: 24px;
+  height: 20px;
+  border: 2px solid #160b5f;
+  border-radius: 6px;
+  bottom: 12px;
+}
+
+.status-seguridad::after {
+  width: 15px;
+  height: 13px;
+  border: 2px solid #160b5f;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  top: 12px;
+}
+
+/* Sincronización */
+.status-sync-icon::before {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #9a6a00;
+  border-left-color: transparent;
+  border-radius: 50%;
+}
+
+.status-sync-icon::after {
+  width: 8px;
+  height: 8px;
+  border-top: 3px solid #9a6a00;
+  border-right: 3px solid #9a6a00;
+  transform: rotate(45deg);
+  right: 12px;
+  top: 15px;
+}
+
+.config-status-card span {
+  display: block;
+  color: #766982;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.config-status-card strong {
+  display: block;
+  color: #21152c;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 7px;
+}
+
+.config-status-card p {
+  margin: 0;
+  color: #8a7e95;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* Toast de guardado */
+.config-toast {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 3500;
+  min-height: 52px;
+  padding: 0 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #d8ecd8;
+  color: #14703d;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 20px 46px rgba(20, 112, 61, 0.18);
+  animation: configToastIn 0.25s ease both;
+}
+
+.config-toast span {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #edf8f1;
+  border: 1px solid #cbead7;
+  position: relative;
+}
+
+.config-toast span::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 6px;
+  border-left: 3px solid #14703d;
+  border-bottom: 3px solid #14703d;
+  transform: rotate(-45deg);
+  left: 6px;
+  top: 7px;
+}
+
+@keyframes configToastIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE ORIGINAL (DEL CLIENTE)
+───────────────────────────────────────────── */
+
+@media (max-width: 1050px) {
+  .config-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .config-grid,
+  .config-security-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .config-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .config-option-card {
+    grid-template-columns: 58px 1fr;
+  }
+
+  .config-option-card select,
+  .config-option-card .config-toggle {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .config-status-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .config-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .config-user-card,
+  .config-reset-box {
+    grid-template-columns: 1fr;
+  }
+
+  .config-list-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE ADICIONAL MEJORADO
+───────────────────────────────────────────── */
+
+/* Tablets (768px - 991px) */
+@media (max-width: 991px) {
+  .config-page {
+    padding: 0 12px;
+  }
+
+  .config-hero {
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+
+  .config-hero h1 {
+    font-size: 36px;
+  }
+
+  .config-hero p {
+    font-size: 14px;
+  }
+
+  .config-hero-tags span {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+
+  .config-user-card {
+    max-width: 100%;
+  }
+
+  .config-tabs {
+    gap: 12px;
+  }
+
+  .config-tabs button {
+    min-height: 64px;
+    gap: 8px;
+  }
+
+  .tab-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .config-panel {
+    padding: 20px;
+  }
+
+  .config-panel-header h2 {
+    font-size: 24px;
+  }
+
+  .config-panel-header p {
+    font-size: 13px;
+  }
+
+  .config-grid {
+    gap: 14px;
+  }
+
+  .config-option-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .config-option-card h3 {
+    font-size: 15px;
+  }
+
+  .config-option-card p {
+    font-size: 12px;
+  }
+
+  .config-option-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .config-option-icon::before {
+    width: 20px;
+    height: 24px;
+    left: 14px;
+    top: 12px;
+  }
+
+  .config-list-item {
+    padding: 14px 18px;
+  }
+
+  .config-list-item h3 {
+    font-size: 15px;
+  }
+
+  .config-security-grid {
+    gap: 14px;
+  }
+
+  .config-security-card {
+    padding: 16px;
+  }
+
+  .config-security-card strong {
+    font-size: 15px;
+  }
+
+  .security-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .config-status-row {
+    gap: 14px;
+  }
+
+  .config-status-card {
+    padding: 16px;
+    grid-template-columns: 54px 1fr;
+    gap: 14px;
+  }
+
+  .status-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .config-status-card strong {
+    font-size: 22px;
+  }
+
+  .config-modal {
+    width: min(480px, 95%);
+  }
+
+  .config-modal-header {
+    padding: 20px 22px;
+  }
+
+  .config-modal-header h2 {
+    font-size: 24px;
+  }
+
+  .config-modal-body {
+    padding: 20px 22px;
+  }
+
+  .config-modal-footer {
+    padding: 16px 22px 20px;
+  }
+}
+
+/* Móviles grandes (576px - 767px) */
+@media (max-width: 767px) {
+  .config-page {
+    padding: 0 8px;
+  }
+
+  .config-hero {
+    padding: 24px 20px;
+    border-radius: 24px;
+    min-height: auto;
+  }
+
+  .config-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    gap: 8px;
+  }
+
+  .config-eyebrow::before {
+    width: 28px;
+  }
+
+  .config-hero h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .config-hero p {
+    font-size: 13px;
+  }
+
+  .config-hero-tags {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .config-hero-tags span {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .config-user-card {
+    padding: 16px;
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+  }
+
+  .config-user-avatar {
+    width: 54px;
+    height: 54px;
+    font-size: 20px;
+  }
+
+  .config-user-card strong {
+    font-size: 15px;
+  }
+
+  .config-tabs {
+    gap: 10px;
+  }
+
+  .config-tabs button {
+    min-height: 56px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .tab-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon-preferencias::before {
+    width: 14px;
+    height: 14px;
+    left: 7px;
+    top: 7px;
+  }
+
+  .icon-preferencias::after {
+    width: 6px;
+    height: 6px;
+    left: 11px;
+    top: 11px;
+  }
+
+  .icon-notificaciones::before {
+    width: 15px;
+    height: 17px;
+    left: 7px;
+    top: 5px;
+  }
+
+  .icon-notificaciones::after {
+    width: 7px;
+    left: 11px;
+    bottom: 5px;
+  }
+
+  .icon-seguridad::before {
+    width: 15px;
+    height: 13px;
+    left: 7px;
+    bottom: 6px;
+  }
+
+  .icon-seguridad::after {
+    width: 9px;
+    height: 7px;
+    left: 10px;
+    top: 5px;
+  }
+
+  .icon-privacidad::before {
+    width: 15px;
+    height: 15px;
+    left: 7px;
+    top: 7px;
+  }
+
+  .icon-privacidad::after {
+    width: 5px;
+    height: 5px;
+    left: 12px;
+    top: 12px;
+  }
+
+  .config-panel {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .config-panel-header {
+    margin-bottom: 18px;
+  }
+
+  .config-panel-header span {
+    font-size: 10px;
+  }
+
+  .config-panel-header h2 {
+    font-size: 22px;
+  }
+
+  .config-panel-header p {
+    font-size: 12px;
+  }
+
+  .config-grid {
+    gap: 12px;
+  }
+
+  .config-option-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .config-option-card h3 {
+    font-size: 14px;
+  }
+
+  .config-option-card p {
+    font-size: 11px;
+  }
+
+  .config-option-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .config-option-icon::before {
+    width: 18px;
+    height: 22px;
+    left: 13px;
+    top: 11px;
+  }
+
+  .config-option-card select {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .config-list {
+    gap: 10px;
+  }
+
+  .config-list-item {
+    padding: 12px 16px;
+  }
+
+  .config-list-item h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .config-list-item p {
+    font-size: 11px;
+  }
+
+  .config-toggle {
+    width: 50px;
+    height: 28px;
+  }
+
+  .config-toggle span {
+    width: 22px;
+    height: 22px;
+  }
+
+  .config-toggle.on span {
+    transform: translateX(22px);
+  }
+
+  .config-security-grid {
+    gap: 12px;
+  }
+
+  .config-security-card {
+    padding: 14px;
+  }
+
+  .config-security-card span {
+    font-size: 10px;
+  }
+
+  .config-security-card strong {
+    font-size: 14px;
+  }
+
+  .config-security-card p {
+    font-size: 11px;
+  }
+
+  .security-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .security-icon::before {
+    width: 20px;
+    height: 16px;
+    left: 14px;
+    bottom: 10px;
+  }
+
+  .security-icon::after {
+    width: 12px;
+    height: 10px;
+    left: 18px;
+    top: 10px;
+  }
+
+  .config-security-card button {
+    height: 38px;
+    font-size: 12px;
+    padding: 0 14px;
+  }
+
+  .config-reset-box {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .config-reset-box h3 {
+    font-size: 14px;
+  }
+
+  .config-reset-box p {
+    font-size: 11px;
+  }
+
+  .config-reset-box button {
+    height: 38px;
+    font-size: 12px;
+    padding: 0 14px;
+  }
+
+  .config-status-row {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .config-status-card {
+    padding: 14px;
+    grid-template-columns: 48px 1fr;
+    gap: 12px;
+  }
+
+  .status-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .status-cuenta::before {
+    width: 14px;
+    height: 14px;
+    top: 10px;
+  }
+
+  .status-cuenta::after {
+    width: 22px;
+    height: 11px;
+    bottom: 8px;
+  }
+
+  .status-seguridad::before {
+    width: 19px;
+    height: 16px;
+    bottom: 10px;
+  }
+
+  .status-seguridad::after {
+    width: 12px;
+    height: 10px;
+    top: 10px;
+  }
+
+  .status-sync-icon::before {
+    width: 22px;
+    height: 22px;
+  }
+
+  .status-sync-icon::after {
+    width: 6px;
+    height: 6px;
+    right: 10px;
+    top: 12px;
+  }
+
+  .config-status-card span {
+    font-size: 10px;
+  }
+
+  .config-status-card strong {
+    font-size: 20px;
+  }
+
+  .config-status-card p {
+    font-size: 11px;
+  }
+
+  .config-toast {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+}
+
+/* Móviles pequeños (480px - 575px) */
+@media (max-width: 575px) {
+  .config-hero {
+    padding: 20px 16px;
+  }
+
+  .config-hero h1 {
+    font-size: 26px;
+  }
+
+  .config-user-card {
+    padding: 14px;
+  }
+
+  .config-user-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .config-user-card strong {
+    font-size: 14px;
+  }
+
+  .config-tabs button {
+    min-height: 50px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .tab-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .config-panel {
+    padding: 14px;
+  }
+
+  .config-panel-header h2 {
+    font-size: 20px;
+  }
+
+  .config-option-card {
+    padding: 12px;
+  }
+
+  .config-option-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .config-option-icon::before {
+    width: 16px;
+    height: 20px;
+    left: 12px;
+    top: 10px;
+  }
+
+  .config-list-item {
+    padding: 10px 14px;
+  }
+
+  .config-security-card {
+    padding: 12px;
+  }
+
+  .security-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .config-reset-box {
+    padding: 14px;
+  }
+
+  .config-status-card {
+    padding: 12px;
+    grid-template-columns: 44px 1fr;
+  }
+
+  .status-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .config-status-card strong {
+    font-size: 18px;
+  }
+
+  .config-modal-header {
+    padding: 18px 20px;
+  }
+
+  .config-modal-header h2 {
+    font-size: 22px;
+  }
+
+  .config-modal-header button {
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+  }
+
+  .config-modal-body {
+    padding: 18px 20px;
+  }
+
+  .config-modal-body label {
+    font-size: 12px;
+  }
+
+  .config-modal-body input {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .config-modal-footer {
+    padding: 14px 20px 18px;
+  }
+
+  .config-modal-footer button {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+}
+
+/* Móviles muy pequeños (hasta 380px) */
+@media (max-width: 380px) {
+  .config-hero h1 {
+    font-size: 24px;
+  }
+
+  .config-hero p {
+    font-size: 12px;
+  }
+
+  .config-tabs button {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .tab-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .config-panel-header h2 {
+    font-size: 18px;
+  }
+
+  .config-option-card h3 {
+    font-size: 13px;
+  }
+
+  .config-status-card strong {
+    font-size: 16px;
+  }
+
+  .config-modal-header h2 {
+    font-size: 20px;
+  }
+}

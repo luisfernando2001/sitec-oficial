@@ -1,0 +1,2182 @@
+/* ─────────────────────────────────────────────
+   SOLICITUDES - SITEC ADMIN
+   Estilo compacto similar a Panel / Gestión de Libros
+───────────────────────────────────────────── */
+
+.solicitudes-section {
+  --sitec-primary: #160f63;
+  --sitec-primary-soft: #24106d;
+  --sitec-wine: #8e0d2d;
+  --sitec-wine-dark: #6f123d;
+  --sitec-gold: #f7bd38;
+  --sitec-green: #0a6e3c;
+  --sitec-red: #b3122f;
+  --sitec-bg: #f5f2f8;
+  --sitec-card: #ffffff;
+  --sitec-border: #e7deec;
+  --sitec-text: #20142f;
+  --sitec-muted: #766983;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--sitec-text);
+}
+
+.solicitudes-section::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(239, 180, 60, 0.12), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.solicitudes-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────────
+   ENCABEZADO
+───────────────────────────────────────────── */
+
+.solicitudes-header {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 253, 0.96)),
+    radial-gradient(circle at top right, rgba(111, 18, 61, 0.08), transparent 45%);
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  box-shadow:
+    0 14px 30px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.solicitudes-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--sitec-primary), var(--sitec-wine));
+}
+
+.solicitudes-header::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(247, 189, 56, 0.08);
+}
+
+.solicitudes-header > div,
+.solicitudes-header__status {
+  position: relative;
+  z-index: 1;
+}
+
+.solicitudes-eyebrow {
+  margin: 0 0 6px;
+  color: #c98b09;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3.4px;
+  text-transform: uppercase;
+}
+
+.solicitudes-header h1 {
+  margin: 0;
+  color: var(--sitec-primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.solicitudes-header p {
+  max-width: 760px;
+  margin: 8px 0 0;
+  color: var(--sitec-muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.solicitudes-header__status {
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #fff5d9;
+  border: 1px solid rgba(201, 139, 9, 0.22);
+  color: #c98b09;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 10px 22px rgba(201, 139, 9, 0.08);
+  white-space: nowrap;
+}
+
+.solicitudes-header__status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c98b09;
+  box-shadow: 0 0 0 4px rgba(201, 139, 9, 0.14);
+}
+
+/* ─────────────────────────────────────────────
+   MÉTRICAS COMPACTAS
+───────────────────────────────────────────── */
+
+.solicitudes-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.solicitud-metric {
+  height: 86px;
+  min-height: 86px;
+  padding: 15px 18px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid var(--sitec-border);
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 14px;
+  align-items: center;
+
+  box-shadow:
+    0 10px 24px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.solicitud-metric:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 34px rgba(39, 22, 70, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Línea superior de color */
+.solicitud-metric::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  border-radius: 14px 14px 0 0;
+}
+
+.solicitud-metric.primary::before {
+  background: linear-gradient(90deg, var(--sitec-primary), #2e2ab0);
+}
+
+.solicitud-metric.success::before {
+  background: linear-gradient(90deg, var(--sitec-green), #16a05d);
+}
+
+.solicitud-metric.warning::before {
+  background: linear-gradient(90deg, #c98b09, var(--sitec-gold));
+}
+
+.solicitud-metric.danger::before {
+  background: linear-gradient(90deg, var(--sitec-wine), var(--sitec-red));
+}
+
+/* Decoración suave */
+.solicitud-metric::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(17, 11, 81, 0.035);
+  z-index: 0;
+}
+
+.solicitud-metric > * {
+  position: relative;
+  z-index: 1;
+}
+
+.solicitud-metric.primary {
+  background:
+    radial-gradient(circle at top right, rgba(22, 15, 99, 0.06), transparent 38%),
+    #ffffff;
+}
+
+.solicitud-metric.success {
+  background:
+    radial-gradient(circle at top right, rgba(10, 110, 60, 0.06), transparent 38%),
+    #ffffff;
+}
+
+.solicitud-metric.warning {
+  background:
+    radial-gradient(circle at top right, rgba(239, 180, 60, 0.09), transparent 38%),
+    #ffffff;
+}
+
+.solicitud-metric.danger {
+  background:
+    radial-gradient(circle at top right, rgba(179, 18, 47, 0.06), transparent 38%),
+    #ffffff;
+}
+
+/* Ícono a la izquierda */
+.solicitud-metric__icon {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  max-width: 46px;
+  max-height: 46px;
+  border-radius: 12px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 18px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.solicitud-metric.primary .solicitud-metric__icon {
+  background: #f1edf8;
+  color: var(--sitec-primary);
+}
+
+.solicitud-metric.success .solicitud-metric__icon {
+  background: #e5f7ee;
+  color: var(--sitec-green);
+}
+
+.solicitud-metric.warning .solicitud-metric__icon {
+  background: #fff1cc;
+  color: #c98b09;
+}
+
+.solicitud-metric.danger .solicitud-metric__icon {
+  background: #fde5ed;
+  color: var(--sitec-red);
+}
+
+/* Tamaño del SVG interno, igual al panel */
+.solicitud-metric__icon .request-icon,
+.solicitud-metric__icon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.request-icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Textos de métrica al lado del icono */
+.solicitud-metric strong {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 0 2px;
+  color: var(--sitec-primary);
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.6px;
+}
+
+.solicitud-metric.success strong {
+  color: var(--sitec-green);
+}
+
+.solicitud-metric.warning strong {
+  color: #c98b09;
+}
+
+.solicitud-metric.danger strong {
+  color: var(--sitec-wine-dark);
+}
+
+.solicitud-metric h3 {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+  color: #3f3150;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.solicitud-metric p {
+  grid-column: 2;
+  grid-row: 3;
+  margin: 2px 0 0;
+  color: var(--sitec-muted);
+  font-size: 10.8px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ─────────────────────────────────────────────
+   BUSCADOR Y FILTRO
+───────────────────────────────────────────── */
+
+.solicitudes-tools {
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  gap: 14px;
+}
+
+.solicitudes-search {
+  height: 46px;
+  background: #ffffff;
+  border: 1px solid var(--sitec-border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-shadow: 0 8px 20px rgba(39, 22, 70, 0.05);
+  transition: 0.2s ease;
+}
+
+.solicitudes-search:focus-within {
+  border-color: rgba(22, 15, 99, 0.45);
+  box-shadow:
+    0 10px 24px rgba(39, 22, 70, 0.08),
+    0 0 0 4px rgba(22, 15, 99, 0.06);
+}
+
+.solicitudes-search span {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--sitec-primary);
+  border-radius: 50%;
+  margin-right: 12px;
+  position: relative;
+  opacity: 0.75;
+}
+
+.solicitudes-search span::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  bottom: -5px;
+  width: 8px;
+  height: 2px;
+  background: var(--sitec-primary);
+  border-radius: 999px;
+  transform: rotate(45deg);
+}
+
+.solicitudes-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #1a0a2e;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.solicitudes-search input::placeholder {
+  color: #9b90a8;
+}
+
+.solicitudes-tools select {
+  height: 46px;
+  border: 1px solid var(--sitec-border);
+  border-radius: 14px;
+  background: #ffffff;
+  color: #51465f;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 8px 20px rgba(39, 22, 70, 0.05);
+  transition: 0.2s ease;
+}
+
+.solicitudes-tools select:focus {
+  border-color: rgba(22, 15, 99, 0.45);
+  box-shadow:
+    0 10px 24px rgba(39, 22, 70, 0.08),
+    0 0 0 4px rgba(22, 15, 99, 0.06);
+}
+
+/* ─────────────────────────────────────────────
+   LAYOUT
+───────────────────────────────────────────── */
+
+.solicitudes-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) 360px;
+  gap: 20px;
+}
+
+.solicitudes-table-card,
+.solicitud-detail {
+  background: #ffffff;
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 13px 28px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.solicitudes-card-head,
+.solicitud-detail__head {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--sitec-border);
+  background:
+    linear-gradient(180deg, #ffffff, #fbf9fd),
+    radial-gradient(circle at right top, rgba(239, 180, 60, 0.08), transparent 42%);
+}
+
+.solicitudes-card-head h2,
+.solicitud-detail__head h2 {
+  margin: 0;
+  color: #1a0a2e;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.solicitudes-card-head p,
+.solicitud-detail__head p {
+  margin: 4px 0 0;
+  color: var(--sitec-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────
+   TABLA
+───────────────────────────────────────────── */
+
+.solicitudes-table-wrap {
+  overflow-x: auto;
+}
+
+.solicitudes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.solicitudes-table thead {
+  background: linear-gradient(90deg, var(--sitec-primary), var(--sitec-primary-soft));
+}
+
+.solicitudes-table th {
+  padding: 13px 16px;
+  color: #ffffff;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.solicitudes-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--sitec-border);
+  color: #51465f;
+  font-size: 13px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.solicitudes-table tbody tr {
+  transition: 0.18s ease;
+}
+
+.solicitudes-table tbody tr:nth-child(even) {
+  background: rgba(250, 248, 253, 0.45);
+}
+
+.solicitudes-table tbody tr:hover {
+  background: #f5f1fa;
+}
+
+.solicitud-main strong {
+  display: block;
+  color: #1a0a2e;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.solicitud-main span {
+  color: var(--sitec-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+}
+
+.solicitud-main span::before {
+  content: "Solicitante: ";
+  color: #9b90a8;
+  font-weight: 500;
+}
+
+/* Badges */
+
+.solicitud-badge {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.badge-subida {
+  background: rgba(17, 11, 81, 0.08);
+  color: var(--sitec-primary);
+  border-color: rgba(17, 11, 81, 0.08);
+}
+
+.badge-sugerencia {
+  background: rgba(239, 180, 60, 0.16);
+  color: #c98b09;
+  border-color: rgba(201, 139, 9, 0.16);
+}
+
+.badge-rechazo {
+  background: rgba(168, 15, 42, 0.12);
+  color: #a80f2a;
+  border-color: rgba(168, 15, 42, 0.18);
+}
+
+/* Acciones */
+
+.solicitudes-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.solicitudes-actions button,
+.detail-actions button {
+  border-radius: 10px;
+  padding: 7px 11px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.btn-view {
+  border: 1px solid rgba(17, 11, 81, 0.18);
+  background: #ffffff;
+  color: var(--sitec-primary);
+}
+
+.btn-view:hover {
+  background: var(--sitec-primary);
+  color: #ffffff;
+}
+
+.btn-approve,
+.detail-actions .approve {
+  border: 1px solid rgba(10, 110, 60, 0.25);
+  background: #f7fffa;
+  color: var(--sitec-green);
+}
+
+.btn-approve:hover,
+.detail-actions .approve:hover {
+  background: var(--sitec-green);
+  color: #ffffff;
+}
+
+.btn-reject,
+.detail-actions .reject {
+  border: 1px solid rgba(179, 18, 47, 0.25);
+  background: #fff8fa;
+  color: var(--sitec-red);
+}
+
+.btn-reject:hover,
+.detail-actions .reject:hover {
+  background: var(--sitec-red);
+  color: #ffffff;
+}
+
+.solicitudes-empty {
+  padding: 34px !important;
+  text-align: center;
+  color: var(--sitec-muted) !important;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────
+   DETALLE LATERAL
+───────────────────────────────────────────── */
+
+.solicitud-detail {
+  min-height: 470px;
+  position: sticky;
+  top: 92px;
+  align-self: flex-start;
+}
+
+.solicitud-detail__body {
+  padding: 22px;
+}
+
+.detail-type {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(239, 180, 60, 0.16);
+  color: #c98b09;
+  border: 1px solid rgba(201, 139, 9, 0.16);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.solicitud-detail__body h3 {
+  margin: 0 0 16px;
+  color: var(--sitec-primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.detail-list div {
+  background: #faf8fd;
+  border: 1px solid var(--sitec-border);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.detail-list span {
+  display: block;
+  color: var(--sitec-muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.detail-list strong {
+  color: #1a0a2e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.solicitud-detail__body p {
+  color: #71657f;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.detail-actions button {
+  width: 100%;
+  padding: 11px 12px;
+}
+
+/* Estado vacío */
+
+.solicitud-detail__empty {
+  padding: 34px 24px;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--sitec-muted);
+}
+
+.solicitud-detail__empty .request-icon {
+  width: 50px;
+  height: 50px;
+  color: var(--sitec-primary);
+  margin-bottom: 18px;
+  padding: 11px;
+  border-radius: 16px;
+  background: #f3f0f8;
+  box-shadow:
+    0 8px 18px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.solicitud-detail__empty h3 {
+  margin: 0;
+  color: var(--sitec-primary);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.solicitud-detail__empty p {
+  margin: 8px 0 0;
+  color: var(--sitec-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ===================================================== */
+/* RESPONSIVE - MEDIA QUERIES (SIN CAMBIAR NADA ORIGINAL) */
+/* ===================================================== */
+
+/* Pantallas muy grandes */
+@media (min-width: 1920px) {
+  .solicitudes-section {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  
+  .solicitudes-metrics {
+    gap: 24px;
+  }
+  
+  .solicitud-metric {
+    height: 98px;
+    min-height: 98px;
+  }
+  
+  .solicitud-metric strong {
+    font-size: 30px;
+  }
+}
+
+/* Escritorios grandes */
+@media (max-width: 1400px) {
+  .solicitudes-metrics {
+    gap: 16px;
+  }
+  
+  .solicitud-metric strong {
+    font-size: 24px;
+  }
+  
+  .solicitudes-layout {
+    gap: 18px;
+  }
+}
+
+/* Escritorios medianos */
+@media (max-width: 1250px) {
+  .solicitudes-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solicitudes-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .solicitud-detail {
+    position: static;
+  }
+  
+  .solicitudes-tools {
+    gap: 12px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .solicitudes-header {
+    padding: 22px 24px;
+  }
+  
+  .solicitudes-header h1 {
+    font-size: 30px;
+  }
+  
+  .solicitudes-header p {
+    font-size: 13px;
+  }
+  
+  .solicitudes-card-head,
+  .solicitud-detail__head {
+    padding: 16px 20px;
+  }
+  
+  .solicitudes-card-head h2,
+  .solicitud-detail__head h2 {
+    font-size: 15px;
+  }
+  
+  .solicitudes-table th,
+  .solicitudes-table td {
+    padding: 12px;
+  }
+  
+  .solicitudes-table td {
+    font-size: 12px;
+  }
+  
+  .solicitud-main strong {
+    font-size: 12px;
+  }
+  
+  .solicitud-main span {
+    font-size: 10.5px;
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .solicitudes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .solicitudes-header h1 {
+    font-size: 28px;
+  }
+
+  .solicitudes-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .solicitudes-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .solicitudes-header__status {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .solicitudes-search,
+  .solicitudes-tools select {
+    width: 100%;
+  }
+  
+  .solicitud-metric {
+    height: auto;
+    min-height: 86px;
+  }
+  
+  .solicitudes-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .solicitudes-actions button {
+    width: 100%;
+  }
+  
+  .detail-list div {
+    padding: 10px 12px;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 576px) {
+  .solicitudes-section {
+    gap: 16px;
+  }
+  
+  .solicitudes-header {
+    padding: 18px;
+  }
+  
+  .solicitudes-header h1 {
+    font-size: 24px;
+  }
+  
+  .solicitudes-header p {
+    font-size: 12px;
+  }
+  
+  .solicitudes-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+  
+  .solicitudes-header__status {
+    font-size: 11px;
+    padding: 0 12px;
+    min-height: 34px;
+  }
+  
+  .solicitud-metric {
+    padding: 12px 15px;
+  }
+  
+  .solicitud-metric strong {
+    font-size: 22px;
+  }
+  
+  .solicitud-metric h3 {
+    font-size: 11px;
+  }
+  
+  .solicitud-metric p {
+    font-size: 10px;
+  }
+  
+  .solicitud-metric__icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+  
+  .solicitud-metric__icon svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .solicitudes-card-head,
+  .solicitud-detail__head {
+    padding: 14px 16px;
+  }
+  
+  .solicitudes-card-head h2,
+  .solicitud-detail__head h2 {
+    font-size: 14px;
+  }
+  
+  .solicitudes-table th {
+    font-size: 9px;
+    padding: 10px;
+  }
+  
+  .solicitudes-table td {
+    padding: 10px;
+    font-size: 11px;
+  }
+  
+  .solicitud-main strong {
+    font-size: 11px;
+  }
+  
+  .solicitud-badge {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+  
+  .solicitud-detail__body {
+    padding: 16px;
+  }
+  
+  .solicitud-detail__body h3 {
+    font-size: 20px;
+  }
+  
+  .detail-list div {
+    padding: 10px;
+  }
+  
+  .detail-list strong {
+    font-size: 12px;
+  }
+  
+  .detail-actions button {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+  
+  .solicitud-detail__empty {
+    padding: 24px 16px;
+    min-height: 280px;
+  }
+  
+  .solicitud-detail__empty h3 {
+    font-size: 16px;
+  }
+  
+  .solicitud-detail__empty p {
+    font-size: 12px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .solicitudes-header h1 {
+    font-size: 22px;
+  }
+  
+  .solicitudes-header p {
+    font-size: 11px;
+  }
+  
+  .solicitud-metric {
+    grid-template-columns: 42px 1fr;
+    column-gap: 12px;
+  }
+  
+  .solicitud-metric strong {
+    font-size: 20px;
+  }
+  
+  .solicitud-metric__icon {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+  
+  .solicitud-metric__icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .solicitudes-search input {
+    font-size: 13px;
+  }
+  
+  .solicitudes-tools select {
+    font-size: 12px;
+    height: 42px;
+  }
+  
+  .solicitudes-search {
+    height: 42px;
+  }
+  
+  .solicitudes-table th {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  
+  .btn-view,
+  .btn-approve,
+  .btn-reject {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+}
+
+/* Orientación landscape en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .solicitudes-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .solicitudes-layout {
+    gap: 16px;
+  }
+  
+  .solicitud-metric {
+    height: auto;
+    min-height: 86px;
+  }
+  
+  .solicitudes-actions {
+    flex-direction: row;
+  }
+  
+  .solicitudes-actions button {
+    width: auto;
+  }
+}
+
+/* =====================================================
+   MEJORA VISUAL EXTRA - SOLICITUDES
+   Rectángulos con más estilo + lista más profesional
+   PEGAR AL FINAL DEL CSS
+===================================================== */
+
+/* Fondo general con detalle visual suave */
+.solicitudes-section {
+  background:
+    radial-gradient(circle at top right, rgba(247, 189, 56, 0.08), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(22, 15, 99, 0.05), transparent 32%);
+}
+
+/* =====================================================
+   MÉTRICAS RECTANGULARES CON MÁS ESTILO
+===================================================== */
+
+.solicitudes-metrics {
+  gap: 18px !important;
+}
+
+.solicitud-metric {
+  height: 92px !important;
+  min-height: 92px !important;
+  padding: 16px 18px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(231, 222, 236, 0.95) !important;
+  overflow: hidden !important;
+  position: relative !important;
+
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(251, 249, 253, 0.95)) !important;
+
+  box-shadow:
+    0 14px 30px rgba(39, 22, 70, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* brillo decorativo */
+.solicitud-metric::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 95px !important;
+  height: 95px !important;
+  right: -28px !important;
+  top: -28px !important;
+  border-radius: 50% !important;
+  z-index: 0 !important;
+}
+
+/* línea superior más elegante */
+.solicitud-metric::before {
+  height: 5px !important;
+  border-radius: 18px 18px 0 0 !important;
+}
+
+/* fondos por tipo */
+.solicitud-metric.primary {
+  background:
+    radial-gradient(circle at top right, rgba(22, 15, 99, 0.11), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitud-metric.primary::after {
+  background: rgba(22, 15, 99, 0.07) !important;
+}
+
+.solicitud-metric.success {
+  background:
+    radial-gradient(circle at top right, rgba(10, 110, 60, 0.11), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitud-metric.success::after {
+  background: rgba(10, 110, 60, 0.07) !important;
+}
+
+.solicitud-metric.warning {
+  background:
+    radial-gradient(circle at top right, rgba(247, 189, 56, 0.18), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitud-metric.warning::after {
+  background: rgba(247, 189, 56, 0.12) !important;
+}
+
+.solicitud-metric.danger {
+  background:
+    radial-gradient(circle at top right, rgba(179, 18, 47, 0.12), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitud-metric.danger::after {
+  background: rgba(179, 18, 47, 0.08) !important;
+}
+
+/* iconos con más presencia */
+.solicitud-metric__icon {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 10px 20px rgba(39, 22, 70, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.solicitud-metric__icon .request-icon,
+.solicitud-metric__icon svg {
+  width: 35px !important;
+  height: 35px !important;
+  stroke-width: 2.1 !important;
+}
+
+/* mejor jerarquía de texto */
+.solicitud-metric strong {
+  font-size: 27px !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.8px !important;
+}
+
+.solicitud-metric h3 {
+  font-size: 12.8px !important;
+  font-weight: 650 !important;
+  color: #322445 !important;
+}
+
+.solicitud-metric p {
+  font-size: 11px !important;
+  color: #7a6a8a !important;
+}
+
+/* efecto hover más elegante */
+.solicitud-metric:hover {
+  transform: translateY(-4px) !important;
+  box-shadow:
+    0 20px 42px rgba(39, 22, 70, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* =====================================================
+   LISTA / TABLA DE SOLICITUDES MÁS PROFESIONAL
+===================================================== */
+
+.solicitudes-table-card {
+  border-radius: 24px !important;
+  background:
+    linear-gradient(180deg, #ffffff, #fbf9fd) !important;
+  box-shadow:
+    0 16px 34px rgba(39, 22, 70, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* encabezado de la tarjeta */
+.solicitudes-card-head {
+  padding: 20px 24px !important;
+  background:
+    linear-gradient(180deg, #ffffff, #faf8fd),
+    radial-gradient(circle at right top, rgba(247, 189, 56, 0.12), transparent 45%) !important;
+}
+
+.solicitudes-card-head h2 {
+  color: #160f63 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.solicitudes-card-head h2::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 2px solid #160f63;
+  box-shadow: inset 7px 0 0 rgba(22, 15, 99, 0.12);
+}
+
+/* tabla con filas tipo tarjeta */
+.solicitudes-table {
+  border-collapse: separate !important;
+  border-spacing: 0 10px !important;
+  padding: 8px 14px 16px !important;
+}
+
+.solicitudes-table thead {
+  background: transparent !important;
+}
+
+.solicitudes-table th {
+  background: linear-gradient(90deg, #160f63, #24106d) !important;
+  padding: 13px 16px !important;
+}
+
+.solicitudes-table th:first-child {
+  border-radius: 14px 0 0 14px !important;
+}
+
+.solicitudes-table th:last-child {
+  border-radius: 0 14px 14px 0 !important;
+}
+
+/* filas visuales */
+.solicitudes-table tbody tr {
+  background: #ffffff !important;
+  box-shadow:
+    0 8px 20px rgba(39, 22, 70, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease !important;
+}
+
+.solicitudes-table tbody tr:hover {
+  transform: translateY(-2px) !important;
+  background:
+    linear-gradient(90deg, rgba(247, 189, 56, 0.05), rgba(250, 248, 253, 0.98)) !important;
+  box-shadow:
+    0 12px 26px rgba(39, 22, 70, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* celdas como tarjeta */
+.solicitudes-table td {
+  background: transparent !important;
+  border-bottom: none !important;
+  padding: 15px 16px !important;
+  vertical-align: middle !important;
+}
+
+.solicitudes-table td:first-child {
+  border-radius: 14px 0 0 14px !important;
+  position: relative !important;
+}
+
+/* barrita lateral por fila */
+.solicitudes-table td:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(180deg, #f7bd38, #8e0d2d);
+}
+
+.solicitudes-table td:last-child {
+  border-radius: 0 14px 14px 0 !important;
+}
+
+/* texto principal */
+.solicitud-main strong {
+  font-size: 13.8px !important;
+  font-weight: 700 !important;
+  color: #1a0a2e !important;
+}
+
+.solicitud-main span {
+  font-size: 11.8px !important;
+  font-weight: 400 !important;
+  color: #7a6a8a !important;
+}
+
+/* badges más definidos */
+.solicitud-badge {
+  min-height: 26px !important;
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 650 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.badge-subida {
+  background: rgba(22, 15, 99, 0.09) !important;
+  color: #160f63 !important;
+  border-color: rgba(22, 15, 99, 0.14) !important;
+}
+
+.badge-sugerencia {
+  background: rgba(247, 189, 56, 0.18) !important;
+  color: #b67b04 !important;
+  border-color: rgba(201, 139, 9, 0.22) !important;
+}
+
+.badge-rechazo {
+  background: rgba(179, 18, 47, 0.11) !important;
+  color: #b3122f !important;
+  border-color: rgba(179, 18, 47, 0.18) !important;
+}
+
+/* botones de acción más bonitos */
+.solicitudes-actions {
+  gap: 8px !important;
+}
+
+.solicitudes-actions button {
+  min-height: 30px !important;
+  padding: 7px 12px !important;
+  border-radius: 10px !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  box-shadow: 0 6px 14px rgba(39, 22, 70, 0.05);
+}
+
+.btn-view {
+  background: #ffffff !important;
+  color: #160f63 !important;
+  border: 1px solid rgba(22, 15, 99, 0.16) !important;
+}
+
+.btn-view:hover {
+  background: #160f63 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.btn-approve {
+  background: #f4fff8 !important;
+  color: #0a6e3c !important;
+  border: 1px solid rgba(10, 110, 60, 0.22) !important;
+}
+
+.btn-approve:hover {
+  background: #0a6e3c !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.btn-reject {
+  background: #fff7f9 !important;
+  color: #b3122f !important;
+  border: 1px solid rgba(179, 18, 47, 0.22) !important;
+}
+
+.btn-reject:hover {
+  background: #b3122f !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   DETALLE LATERAL CON MÁS ESTILO
+===================================================== */
+
+.solicitud-detail {
+  border-radius: 24px !important;
+  background:
+    linear-gradient(180deg, #ffffff, #fbf9fd) !important;
+  box-shadow:
+    0 16px 34px rgba(39, 22, 70, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.solicitud-detail__head {
+  padding: 20px 22px !important;
+  background:
+    linear-gradient(180deg, #ffffff, #faf8fd),
+    radial-gradient(circle at right top, rgba(111, 18, 61, 0.09), transparent 45%) !important;
+}
+
+.solicitud-detail__head h2 {
+  color: #160f63 !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+}
+
+.solicitud-detail__body {
+  padding: 22px !important;
+}
+
+/* cajas de detalle con estilo */
+.detail-list div {
+  background:
+    linear-gradient(135deg, #ffffff, #faf8fd) !important;
+  border: 1px solid #e7deec !important;
+  border-radius: 16px !important;
+  padding: 13px 15px !important;
+  box-shadow:
+    0 8px 18px rgba(39, 22, 70, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.detail-list div:hover {
+  border-color: rgba(142, 13, 45, 0.18) !important;
+}
+
+.detail-list span {
+  color: #8a6683 !important;
+  font-size: 9.8px !important;
+  font-weight: 650 !important;
+  letter-spacing: 1.4px !important;
+}
+
+.detail-list strong {
+  color: #1a0a2e !important;
+  font-size: 13.2px !important;
+  font-weight: 650 !important;
+}
+
+/* botones detalle */
+.detail-actions button {
+  min-height: 38px !important;
+  border-radius: 12px !important;
+  font-weight: 650 !important;
+}
+
+/* vacío más visual */
+.solicitud-detail__empty {
+  background:
+    radial-gradient(circle at top, rgba(247, 189, 56, 0.12), transparent 40%);
+}
+
+.solicitud-detail__empty .request-icon {
+  color: #160f63 !important;
+  background: #f1edf8 !important;
+  border: 1px solid #e7deec !important;
+}
+
+/* =====================================================
+   CORRECCIÓN VISUAL FINAL - SOLICITUDES SITEC
+   Métricas con color + botón actualizar + ver archivo
+   PEGAR AL FINAL DE TODO EL CSS
+===================================================== */
+
+/* =====================================================
+   MÉTRICAS: RECTÁNGULOS COMPACTOS CON COLOR
+===================================================== */
+
+.solicitudes-section .solicitudes-metrics {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(190px, 1fr)) !important;
+  gap: 18px !important;
+}
+
+.solicitudes-section .solicitud-metric {
+  height: 92px !important;
+  min-height: 92px !important;
+  padding: 16px 18px !important;
+  border-radius: 18px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(231, 222, 236, 0.95) !important;
+
+  display: grid !important;
+  grid-template-columns: 52px 1fr !important;
+  grid-template-rows: auto auto auto !important;
+  column-gap: 14px !important;
+  align-items: center !important;
+
+  background:
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+
+  box-shadow:
+    0 14px 30px rgba(39, 22, 70, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Línea superior */
+.solicitudes-section .solicitud-metric::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 5px !important;
+  border-radius: 18px 18px 0 0 !important;
+  z-index: 2 !important;
+}
+
+/* Círculo decorativo */
+.solicitudes-section .solicitud-metric::after {
+  content: "" !important;
+  position: absolute !important;
+  width: 90px !important;
+  height: 90px !important;
+  right: -28px !important;
+  top: -28px !important;
+  border-radius: 50% !important;
+  z-index: 0 !important;
+}
+
+/* Colores por tarjeta */
+.solicitudes-section .solicitud-metric:nth-child(1)::before,
+.solicitudes-section .solicitud-metric.primary::before {
+  background: linear-gradient(90deg, #160f63, #2e2ab0) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(2)::before,
+.solicitudes-section .solicitud-metric.warning::before {
+  background: linear-gradient(90deg, #c98b09, #f7bd38) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(3)::before,
+.solicitudes-section .solicitud-metric.success::before {
+  background: linear-gradient(90deg, #0a6e3c, #16a05d) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(4)::before,
+.solicitudes-section .solicitud-metric.danger::before {
+  background: linear-gradient(90deg, #8e0d2d, #b3122f) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(1) {
+  background:
+    radial-gradient(circle at top right, rgba(22, 15, 99, 0.10), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(2) {
+  background:
+    radial-gradient(circle at top right, rgba(247, 189, 56, 0.18), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(3) {
+  background:
+    radial-gradient(circle at top right, rgba(10, 110, 60, 0.11), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(4) {
+  background:
+    radial-gradient(circle at top right, rgba(179, 18, 47, 0.12), transparent 42%),
+    linear-gradient(145deg, #ffffff, #fbf9fd) !important;
+}
+
+/* Si existe el div del icono */
+.solicitudes-section .solicitud-metric__icon {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 14px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 3 !important;
+
+  box-shadow:
+    0 10px 20px rgba(39, 22, 70, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Colores del cuadro del icono */
+.solicitudes-section .solicitud-metric:nth-child(1) .solicitud-metric__icon,
+.solicitudes-section .solicitud-metric.primary .solicitud-metric__icon {
+  background: #f1edf8 !important;
+  color: #160f63 !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(2) .solicitud-metric__icon,
+.solicitudes-section .solicitud-metric.warning .solicitud-metric__icon {
+  background: #fff1cc !important;
+  color: #c98b09 !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(3) .solicitud-metric__icon,
+.solicitudes-section .solicitud-metric.success .solicitud-metric__icon {
+  background: #e5f7ee !important;
+  color: #0a6e3c !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(4) .solicitud-metric__icon,
+.solicitudes-section .solicitud-metric.danger .solicitud-metric__icon {
+  background: #fde5ed !important;
+  color: #b3122f !important;
+}
+
+/* SVG del icono */
+.solicitudes-section .solicitud-metric__icon svg,
+.solicitudes-section .solicitud-metric__icon .request-icon {
+  width: 34px !important;
+  height: 34px !important;
+  stroke-width: 2.1 !important;
+  stroke: currentColor !important;
+}
+
+/* Si en tu JSX NO existe el div del icono, crea un cuadro visual antes del título */
+.solicitudes-section .solicitud-metric:not(:has(.solicitud-metric__icon)) h3::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 18px !important;
+  top: 24px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  background: #f1edf8 !important;
+  box-shadow:
+    0 10px 20px rgba(39, 22, 70, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Corrige texto: que no se pegue como Total0 */
+.solicitudes-section .solicitud-metric strong {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  margin: 0 0 3px !important;
+  font-size: 28px !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.8px !important;
+  color: #160f63 !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(2) strong {
+  color: #c98b09 !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(3) strong {
+  color: #0a6e3c !important;
+}
+
+.solicitudes-section .solicitud-metric:nth-child(4) strong {
+  color: #8e0d2d !important;
+}
+
+.solicitudes-section .solicitud-metric h3 {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  margin: 0 !important;
+  font-size: 12.8px !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+  color: #322445 !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.solicitudes-section .solicitud-metric p {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  margin: 2px 0 0 !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  color: #7a6a8a !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* =====================================================
+   BOTÓN ACTUALIZAR
+===================================================== */
+
+/* Si el botón está dentro de herramientas/filtros */
+.solicitudes-section .solicitudes-tools button,
+.solicitudes-section button.btn-actualizar,
+.solicitudes-section button.actualizar,
+.solicitudes-section .btn-refresh,
+.solicitudes-section .solicitudes-refresh {
+  height: 46px !important;
+  min-height: 46px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 22px !important;
+
+  background: linear-gradient(135deg, #160f63 0%, #24106d 45%, #6f123d 100%) !important;
+  color: #ffffff !important;
+
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+
+  cursor: pointer !important;
+  box-shadow:
+    0 10px 22px rgba(22, 15, 99, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease !important;
+}
+
+.solicitudes-section .solicitudes-tools button:hover,
+.solicitudes-section button.btn-actualizar:hover,
+.solicitudes-section button.actualizar:hover,
+.solicitudes-section .btn-refresh:hover,
+.solicitudes-section .solicitudes-refresh:hover {
+  transform: translateY(-1px) !important;
+  filter: brightness(1.07) !important;
+  box-shadow:
+    0 14px 28px rgba(22, 15, 99, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Si quieres que sea redondeado, cambia arriba border-radius: 0 por esto:
+   border-radius: 14px !important;
+*/
+
+/* =====================================================
+   BOTÓN VER ARCHIVO
+===================================================== */
+
+/* Links o botones de archivo dentro de la tabla */
+.solicitudes-section .solicitudes-table td a,
+.solicitudes-section .solicitudes-table .btn-archivo,
+.solicitudes-section .solicitudes-table .archivo-link,
+.solicitudes-section .solicitudes-table .archivo-btn,
+.solicitudes-section .solicitudes-table button.ver-archivo {
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 7px 13px !important;
+  border-radius: 11px !important;
+  border: 1px solid rgba(22, 15, 99, 0.18) !important;
+
+  background:
+    linear-gradient(180deg, #ffffff, #faf8fd) !important;
+  color: #160f63 !important;
+
+  font-size: 11.5px !important;
+  font-weight: 650 !important;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+  text-decoration: none !important;
+
+  box-shadow:
+    0 7px 16px rgba(39, 22, 70, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease !important;
+}
+
+.solicitudes-section .solicitudes-table td a:hover,
+.solicitudes-section .solicitudes-table .btn-archivo:hover,
+.solicitudes-section .solicitudes-table .archivo-link:hover,
+.solicitudes-section .solicitudes-table .archivo-btn:hover,
+.solicitudes-section .solicitudes-table button.ver-archivo:hover {
+  background: linear-gradient(135deg, #160f63, #6f123d) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow:
+    0 10px 22px rgba(22, 15, 99, 0.18) !important;
+}
+
+/* =====================================================
+   BOTÓN VERSIÓN / VER DETALLE
+===================================================== */
+
+.solicitudes-section .solicitudes-table .btn-view,
+.solicitudes-section .solicitudes-table button {
+  border-radius: 11px !important;
+  font-weight: 650 !important;
+}
+
+/* Evita que el botón actualizar herede estilo de archivo */
+.solicitudes-section .solicitudes-tools button {
+  width: 100% !important;
+}
+
+.solicitudes-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(20, 12, 35, 0.58);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.solicitudes-rechazo-modal {
+  width: min(620px, 100%);
+  background: #ffffff;
+  border-radius: 26px;
+  border: 1px solid rgba(64, 28, 91, 0.16);
+  box-shadow: 0 30px 80px rgba(28, 15, 48, 0.32);
+  overflow: hidden;
+  animation: rechazoModalIn 0.18s ease-out;
+}
+
+@keyframes rechazoModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.solicitudes-rechazo-modal__head {
+  padding: 26px 30px;
+  background: linear-gradient(135deg, #250b72 0%, #8a0f46 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.solicitudes-rechazo-modal__head p {
+  margin: 0 0 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  font-weight: 900;
+  color: #f5c542;
+}
+
+.solicitudes-rechazo-modal__head h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.solicitudes-rechazo-modal__close {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.solicitudes-rechazo-modal__close:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.solicitudes-rechazo-modal__body {
+  padding: 28px 30px 22px;
+}
+
+.solicitudes-rechazo-alert {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #7c2d12;
+  display: grid;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.solicitudes-rechazo-alert strong {
+  font-size: 16px;
+  font-weight: 900;
+  color: #4c0519;
+}
+
+.solicitudes-rechazo-alert span {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.solicitudes-rechazo-field {
+  display: grid;
+  gap: 10px;
+  color: #1d1230;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.solicitudes-rechazo-field textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  border: 1px solid #ddd4e8;
+  border-radius: 18px;
+  padding: 16px 18px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1230;
+  background: #fbfaff;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.solicitudes-rechazo-field textarea:focus {
+  border-color: #8a0f46;
+  box-shadow: 0 0 0 4px rgba(138, 15, 70, 0.12);
+  background: #ffffff;
+}
+
+.solicitudes-rechazo-help {
+  margin: 12px 0 0;
+  color: #786986;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.solicitudes-rechazo-modal__actions {
+  padding: 20px 30px 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.solicitudes-btn.danger {
+  background: linear-gradient(135deg, #be123c 0%, #8a0f46 100%);
+  color: #ffffff;
+  border: 0;
+  box-shadow: 0 16px 30px rgba(190, 18, 60, 0.22);
+}
+
+.solicitudes-btn.danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 38px rgba(190, 18, 60, 0.28);
+}
+
+.solicitudes-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.solicitudes-motivo-rechazo {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #7f1d1d;
+}
+
+.solicitudes-motivo-rechazo span {
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 900;
+  color: #be123c;
+}
+
+.solicitudes-motivo-rechazo p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.solicitudes-motivo-rechazo small {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #9f1239;
+}
+
+/* Responsive para modales */
+@media (max-width: 640px) {
+  .solicitudes-rechazo-modal__head {
+    padding: 20px 22px;
+  }
+  
+  .solicitudes-rechazo-modal__head h2 {
+    font-size: 22px;
+  }
+  
+  .solicitudes-rechazo-modal__body {
+    padding: 20px 22px 16px;
+  }
+  
+  .solicitudes-rechazo-modal__actions {
+    padding: 16px 22px 22px;
+  }
+  
+  .solicitudes-rechazo-field textarea {
+    min-height: 120px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .solicitudes-modal-backdrop {
+    padding: 16px;
+  }
+  
+  .solicitudes-rechazo-modal__head {
+    padding: 16px 18px;
+  }
+  
+  .solicitudes-rechazo-modal__head h2 {
+    font-size: 20px;
+  }
+  
+  .solicitudes-rechazo-modal__body {
+    padding: 16px 18px 12px;
+  }
+  
+  .solicitudes-rechazo-modal__actions {
+    padding: 12px 18px 18px;
+    flex-direction: column;
+  }
+  
+  .solicitudes-rechazo-modal__actions button {
+    width: 100%;
+  }
+  
+  .solicitudes-rechazo-field textarea {
+    min-height: 100px;
+    padding: 12px 14px;
+  }
+  
+  .solicitudes-rechazo-alert {
+    padding: 12px 14px;
+  }
+  
+  .solicitudes-rechazo-alert strong {
+    font-size: 14px;
+  }
+  
+  .solicitudes-rechazo-alert span {
+    font-size: 12px;
+  }
+}

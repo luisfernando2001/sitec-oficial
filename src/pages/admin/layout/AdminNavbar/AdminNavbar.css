@@ -1,0 +1,667 @@
+/* ─────────────────────────────────────────────
+   ADMIN NAVBAR - SITEC
+   
+───────────────────────────────────────────── */
+
+.admin-navbar {
+  --sitec-primary: #160f63;
+  --sitec-primary-soft: #24106d;
+  --sitec-wine: #8e0d2d;
+  --sitec-wine-dark: #6f123d;
+  --sitec-gold: #f7bd38;
+  --sitec-border-light: rgba(255, 255, 255, 0.12);
+
+  height: 76px;
+  width: 100%;
+  padding: 0 30px;
+
+  background:
+    linear-gradient(90deg, #160f63 0%, #24106d 42%, #68143d 100%);
+  border-bottom: 3px solid var(--sitec-gold);
+
+  display: grid;
+  grid-template-columns: 290px minmax(320px, 1fr) 390px;
+  align-items: center;
+  gap: 24px;
+
+  box-shadow:
+    0 10px 28px rgba(17, 11, 81, 0.24),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* IMPORTANTE:
+   Como el navbar ahora es fixed, el contenido debe bajar.
+   Si tu contenedor principal se llama diferente, cambia estas clases.
+*/
+.admin-layout,
+.admin-page,
+.admin-dashboard,
+.admin-shell {
+  padding-top: 76px;
+}
+
+/* ─────────────────────────────────────────────
+   MARCA / LOGOS
+───────────────────────────────────────────── */
+
+.admin-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.admin-navbar__logos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-navbar__logo-card {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(247, 189, 56, 0.55);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.admin-navbar__logo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.admin-navbar__system {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.admin-navbar__system h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.admin-navbar__system span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────
+   CENTRO: MENÚ O BUSCADOR
+───────────────────────────────────────────── */
+
+/* Si tu navbar tiene menú central */
+.admin-navbar__menu {
+  min-width: 0;
+  height: 44px;
+  padding: 0 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 18px rgba(17, 11, 81, 0.12);
+}
+
+.admin-navbar__link {
+  height: 32px;
+  border: none;
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.76);
+  padding: 0 13px;
+  border-radius: 11px;
+
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  position: relative;
+  white-space: nowrap;
+}
+
+.admin-navbar__link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.admin-navbar__link.active {
+  color: #ffffff;
+  background: rgba(247, 189, 56, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(247, 189, 56, 0.22);
+}
+
+.admin-navbar__link.active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--sitec-gold);
+}
+
+.admin-navbar__counter {
+  margin-left: 6px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(247, 189, 56, 0.22);
+  color: var(--sitec-gold);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Si después agregas buscador en el navbar admin */
+.admin-navbar__search {
+  width: min(540px, 100%);
+  height: 44px;
+  margin: 0 auto;
+  padding: 0 0 0 16px;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 8px 18px rgba(17, 11, 81, 0.12);
+}
+
+.admin-navbar__search-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.58);
+  border-radius: 50%;
+  margin-right: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.admin-navbar__search-icon::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  bottom: -5px;
+  width: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  transform: rotate(45deg);
+}
+
+.admin-navbar__search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+.admin-navbar__search input::placeholder {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.admin-navbar__search button {
+  height: 100%;
+  min-width: 108px;
+  border: none;
+  background: linear-gradient(135deg, rgba(247, 189, 56, 0.85), rgba(201, 139, 9, 0.82));
+  color: #160f63;
+
+  font-size: 12.5px;
+  font-weight: 750;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-navbar__search button:hover {
+  filter: brightness(1.08);
+}
+
+/* Separador flexible si existe */
+.admin-navbar__spacer {
+  min-width: 0;
+}
+
+/* ─────────────────────────────────────────────
+   LADO DERECHO
+───────────────────────────────────────────── */
+
+.admin-navbar__right {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.admin-navbar__badge {
+  min-height: 28px;
+  padding: 0 15px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(149, 13, 31, 0.28);
+  border: 1px solid rgba(255, 180, 195, 0.22);
+  color: #ffd5dc;
+
+  font-size: 9.5px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  white-space: nowrap;
+}
+
+/* Usuario */
+.admin-navbar__user {
+  min-width: 198px;
+  max-width: 198px;
+  min-height: 46px;
+
+  padding: 6px 14px 6px 7px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  cursor: pointer;
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-navbar__user:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.admin-navbar__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #b3122f, #6f123d);
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.admin-navbar__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto usuario */
+.admin-navbar__user-name {
+  margin: 0;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-navbar__user-role {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botón salir */
+.admin-navbar__logout {
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(149, 13, 31, 0.42);
+  color: #ffffff;
+
+  padding: 0 17px;
+  border-radius: 11px;
+
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  box-shadow:
+    0 8px 18px rgba(17, 11, 81, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.admin-navbar__logout:hover {
+  background: #b3122f;
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+
+@media (max-width: 1250px) {
+  .admin-navbar {
+    grid-template-columns: 270px minmax(260px, 1fr) 315px;
+    padding: 0 22px;
+    gap: 16px;
+  }
+
+  .admin-navbar__menu {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .admin-navbar__menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .admin-navbar__badge {
+    display: none;
+  }
+
+  .admin-navbar__user {
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  .admin-navbar__logout {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 980px) {
+  .admin-navbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .admin-navbar__menu,
+  .admin-navbar__search {
+    display: none;
+  }
+
+  .admin-navbar__right {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-navbar {
+    height: 70px;
+    padding: 0 16px;
+  }
+
+  .admin-layout,
+  .admin-page,
+  .admin-dashboard,
+  .admin-shell {
+    padding-top: 70px;
+  }
+
+  .admin-navbar__logo-card {
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-navbar__system h1 {
+    font-size: 23px;
+    letter-spacing: 4px;
+  }
+
+  .admin-navbar__system span,
+  .admin-navbar__user,
+  .admin-navbar__badge {
+    display: none;
+  }
+
+  .admin-navbar__logout {
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+}
+/* =====================================================
+   NAVBAR MÁS DELGADO + CORRECCIÓN PARA QUE NO TAPE CONTENIDO
+   PEGAR AL FINAL DEL CSS
+===================================================== */
+
+:root {
+  --admin-navbar-height: 58px;
+}
+
+/* Navbar más delgado */
+.admin-navbar {
+  height: var(--admin-navbar-height) !important;
+  min-height: var(--admin-navbar-height) !important;
+  padding: 0 24px !important;
+  border-bottom: 2px solid #efb43c !important;
+}
+
+/* Evita que paddings anteriores dupliquen espacios */
+.admin-layout,
+.admin-page,
+.admin-dashboard,
+.admin-shell {
+  padding-top: 0 !important;
+}
+
+/* Baja el cuerpo real del administrador debajo del navbar */
+.admin-navbar + div,
+.admin-body,
+.admin-main-wrapper,
+.admin-dashboard-body,
+.admin-shell__body {
+  padding-top: var(--admin-navbar-height) !important;
+}
+
+/* Da aire adicional al contenido de cada pantalla */
+.admin-main,
+.admin-content,
+.admin-dashboard__content,
+.admin-panel-content {
+  padding-top: 18px !important;
+}
+
+/* Fuerza separación en las secciones principales */
+.panel-section,
+.gestion-libros,
+.solicitudes-section,
+.usuarios-section,
+.categorias-section,
+.carreras-section,
+.materias-section,
+.informes-section,
+.configuracion-section,
+.perfil-admin-section {
+  margin-top: 18px !important;
+}
+
+/* Logo más compacto */
+.admin-navbar__logo-card {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 9px !important;
+  padding: 4px !important;
+}
+
+/* Texto SITEC más pequeño */
+.admin-navbar__system h1 {
+  font-size: 23px !important;
+  letter-spacing: 4px !important;
+}
+
+.admin-navbar__system span {
+  font-size: 7.8px !important;
+  letter-spacing: 1.3px !important;
+}
+
+/* Usuario compacto */
+.admin-navbar__user {
+  min-height: 38px !important;
+  min-width: 185px !important;
+  max-width: 185px !important;
+  padding: 4px 12px 4px 6px !important;
+}
+
+.admin-navbar__avatar {
+  width: 31px !important;
+  height: 31px !important;
+  font-size: 12px !important;
+}
+
+.admin-navbar__user-name {
+  font-size: 11.5px !important;
+}
+
+.admin-navbar__user-role {
+  font-size: 8.5px !important;
+}
+
+/* Badge compacto */
+.admin-navbar__badge {
+  min-height: 24px !important;
+  padding: 0 12px !important;
+  font-size: 8.5px !important;
+}
+
+/* Botón salir compacto */
+.admin-navbar__logout {
+  min-height: 32px !important;
+  padding: 0 13px !important;
+  border-radius: 9px !important;
+  font-size: 11.5px !important;
+}
+
+/* Si el sidebar también es sticky/fixed, que empiece debajo del navbar */
+.admin-sidebar {
+  top: var(--admin-navbar-height) !important;
+  height: calc(100vh - var(--admin-navbar-height)) !important;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  :root {
+    --admin-navbar-height: 54px;
+  }
+
+  .admin-navbar {
+    height: var(--admin-navbar-height) !important;
+    min-height: var(--admin-navbar-height) !important;
+    padding: 0 14px !important;
+  }
+
+  .admin-navbar__logo-card {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .admin-navbar__system h1 {
+    font-size: 20px !important;
+    letter-spacing: 3px !important;
+  }
+
+  .admin-navbar__system span,
+  .admin-navbar__user,
+  .admin-navbar__badge {
+    display: none !important;
+  }
+
+  .admin-navbar__logout {
+    min-height: 30px !important;
+    font-size: 11px !important;
+    padding: 0 11px !important;
+  }
+}

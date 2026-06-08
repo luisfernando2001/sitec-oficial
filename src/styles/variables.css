@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --sitec-blue-dark: #060c2e;
+  --sitec-blue-main: #12114b;
+  --sitec-wine-dark: #46000a;
+  --sitec-red-dark: #7c0002;
+
+  --sitec-primary: #12114b;
+  --sitec-secondary: #46000a;
+  --sitec-danger: #7c0002;
+  --sitec-navbar: linear-gradient(90deg, #060c2e 0%, #12114b 45%, #46000a 100%);
+  --sitec-button: linear-gradient(135deg, #12114b 0%, #46000a 100%);
+  --sitec-button-hover: linear-gradient(135deg, #060c2e 0%, #7c0002 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Nunito", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

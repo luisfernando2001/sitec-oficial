@@ -1,0 +1,786 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --sitec-blue:      #0e0757;
+  --sitec-blue-dark: #08043d;
+  --sitec-wine:      #950d1f;
+  --sitec-wine-dark: #7a0a19;
+  --sitec-gold:      #efb43c;
+  --sitec-white:     #ffffff;
+  --sitec-text:      #110b51;
+  --sitec-muted:     #777777;
+  --sitec-bg:        #f5f0eb;
+  --sitec-border:    #dddddd;
+  --sitec-input-bg:  #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ═══════════════════════════════
+   CONTENEDOR PRINCIPAL
+═══════════════════════════════ */
+
+.sitec-login {
+  display: flex;
+  height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ═══════════════════════════════
+   PANEL IZQUIERDO
+═══════════════════════════════ */
+
+.sitec-left {
+  flex: 0 0 55%;
+  background: linear-gradient(160deg, #0b063f 40%, #490712 65%, #700412 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sitec-left::before {
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sitec-left::after {
+  content: '';
+  position: absolute;
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Logos institucionales */
+
+.sitec-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+  z-index: 1;
+}
+
+.sitec-logo-box {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.sitec-logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.sitec-logo-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.30);
+}
+
+/* Marca / Brand */
+
+.sitec-brand {
+  z-index: 1;
+  text-align: center;
+}
+
+.sitec-brand-label {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--sitec-gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.sitec-brand-name,
+.sitec-brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--sitec-white);
+  letter-spacing: 6px;
+  line-height: 1;
+  margin: 0 0 6px;
+}
+
+.sitec-brand-full {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  color: var(--sitec-gold);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.sitec-brand-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.80);
+  line-height: 1.7;
+  text-align: center;
+  max-width: 380px;
+  margin-bottom: 32px;
+}
+
+/* Lista de características */
+
+.sitec-features,
+.sitec-features-card {
+  list-style: none;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  margin: 0;
+  padding: 0;
+}
+
+.sitec-features li {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sitec-features li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sitec-gold);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   PANEL DERECHO
+═══════════════════════════════ */
+
+.sitec-right {
+  flex: 1;
+  background: var(--sitec-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* ═══════════════════════════════
+   TARJETA FORMULARIO
+═══════════════════════════════ */
+
+.sitec-form-wrap,
+.sitec-form-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* TABS */
+
+.sitec-tabs {
+  height: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 4px;
+  margin-bottom: 20px;
+  background: #e8e3de;
+  border-radius: 10px;
+}
+
+.sitec-tabs button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: transparent;
+  color: var(--sitec-muted);
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sitec-tabs button.active {
+  background: var(--sitec-wine);
+  color: var(--sitec-white);
+  box-shadow: 0 4px 12px rgba(149, 13, 31, 0.30);
+}
+
+/* Encabezado del formulario */
+
+.sitec-welcome {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--sitec-gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sitec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--sitec-text);
+  margin: 0 0 8px;
+}
+
+.sitec-subtitle-text {
+  font-size: 13px;
+  color: var(--sitec-muted);
+  margin-bottom: 24px;
+}
+
+/* Etiquetas */
+
+.sitec-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Botones de rol — ocultos (eliminados en la nueva versión) */
+
+.sitec-roles,
+.sitec-role-btn {
+  display: none !important;
+}
+
+/* Grid de dos columnas */
+
+.sitec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ─── Campos de input ─── */
+
+.sitec-field {
+  margin-bottom: 14px;
+}
+
+.sitec-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--sitec-border);
+  border-radius: 6px;
+  background: var(--sitec-input-bg);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.sitec-input-wrap:focus-within {
+  border-color: var(--sitec-wine);
+}
+
+.sitec-input-icon,
+.sitec-input-wrap > span:first-child {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0ece8;
+  border-right: 1.5px solid var(--sitec-border);
+  color: #888;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.sitec-input-wrap input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: #333;
+  padding: 13px 12px;
+  width: 100%;
+}
+
+.sitec-input-wrap input::placeholder {
+  color: #bbb;
+}
+
+/* Inputs sin icono (cambiar contraseña) */
+
+.sitec-input-clean {
+  padding: 0 !important;
+}
+
+.sitec-input-clean input {
+  padding: 13px 14px !important;
+}
+
+.sitec-input-clean span,
+.sitec-input-clean .sitec-input-icon {
+  display: none !important;
+}
+
+/* ─── CAPTCHA ─── */
+
+.sitec-captcha-box {
+  margin-bottom: 14px;
+}
+
+.sitec-captcha-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sitec-captcha-code {
+  height: 38px;
+  min-width: 100px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sitec-text);
+  color: var(--sitec-white);
+  border-radius: 6px 0 0 6px;
+  font-family: 'Trebuchet MS', Verdana, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  user-select: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
+}
+
+.sitec-captcha-refresh {
+  width: 44px;
+  height: 38px;
+  border: 1.5px solid var(--sitec-border);
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  background: var(--sitec-input-bg);
+  color: #888;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sitec-captcha-refresh:hover {
+  background: #efe9e3;
+  color: var(--sitec-wine);
+}
+
+.sitec-captcha-input {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--sitec-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--sitec-input-bg);
+  transition: border-color 0.2s;
+}
+
+.sitec-captcha-input:focus-within {
+  border-color: var(--sitec-wine);
+}
+
+.sitec-captcha-side {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  background: #f0ece8;
+  border-right: 1.5px solid var(--sitec-border);
+}
+
+.sitec-captcha-input input {
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 12px;
+  background: transparent;
+  color: #333;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.sitec-captcha-input input::placeholder {
+  color: #bbb;
+  font-weight: 600;
+}
+
+.sitec-captcha-edit {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1.5px solid var(--sitec-border);
+  color: #888;
+  font-size: 18px;
+}
+
+/* reCAPTCHA simulado (estilo antiguo — se mantiene por compatibilidad) */
+
+.sitec-captcha {
+  border: 1.5px solid var(--sitec-border);
+  border-radius: 6px;
+  background: var(--sitec-input-bg);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.sitec-captcha-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sitec-captcha-check {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.sitec-captcha-check.checked {
+  background: #44aa77;
+  border-color: #44aa77;
+  color: var(--sitec-white);
+}
+
+.sitec-captcha-text {
+  font-size: 13px;
+  color: #555;
+}
+
+.sitec-captcha-badge {
+  text-align: right;
+  font-size: 9px;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+.sitec-captcha-icon {
+  font-size: 20px;
+  display: block;
+  text-align: right;
+}
+
+/* ─── Footer del formulario ─── */
+
+.sitec-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.sitec-remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+}
+
+.sitec-remember input {
+  width: 13px;
+  height: 13px;
+  accent-color: var(--sitec-wine);
+}
+
+.sitec-forgot,
+.sitec-link-btn {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sitec-wine);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  white-space: nowrap;
+}
+
+.sitec-forgot:hover,
+.sitec-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ─── Botón principal ─── */
+
+.sitec-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--sitec-wine);
+  border: none;
+  border-radius: 6px;
+  color: var(--sitec-white);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 20px rgba(149, 13, 31, 0.28);
+}
+
+.sitec-submit:hover {
+  background: var(--sitec-wine-dark);
+  transform: translateY(-1px);
+}
+
+.sitec-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Botón secundario ─── */
+
+.sitec-secondary-btn {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  background: transparent;
+  color: #555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 6px;
+}
+
+.sitec-secondary-btn:hover {
+  border-color: var(--sitec-text);
+  color: var(--sitec-text);
+  background: rgba(17, 11, 81, 0.05);
+}
+
+/* ─── Texto de ayuda inferior ─── */
+
+.sitec-help {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.6;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid #e0dbd5;
+}
+
+.sitec-help a,
+.sitec-help button {
+  font-weight: 700;
+  color: var(--sitec-text);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+}
+
+.sitec-help a:hover,
+.sitec-help button:hover {
+  text-decoration: underline;
+}
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .sitec-left {
+    flex: 0 0 52%;
+    padding: 48px 48px;
+  }
+
+  .sitec-brand-name,
+  .sitec-brand h1 {
+    font-size: 66px;
+  }
+}
+
+@media (max-width: 900px) {
+  html, body, #root {
+    overflow: auto;
+  }
+
+  .sitec-login {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .sitec-left,
+  .sitec-right {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .sitec-left {
+    padding: 40px 28px;
+  }
+
+  .sitec-right {
+    padding: 32px 24px;
+  }
+
+  .sitec-form-wrap,
+  .sitec-form-card {
+    max-height: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .sitec-right {
+    padding: 20px 16px;
+  }
+
+  .sitec-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sitec-form-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sitec-brand-name,
+  .sitec-brand h1 {
+    font-size: 52px;
+    letter-spacing: 4px;
+  }
+
+  .sitec-brand-full {
+    letter-spacing: 2.4px;
+  }
+
+  .sitec-features,
+  .sitec-features-card {
+    display: none;
+  }
+}
+.sitec-email-control {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sitec-email-control input {
+  flex: 1;
+  min-width: 0;
+}
+
+.sitec-email-domain {
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border-left: 1.5px solid var(--sitec-border);
+  background: #f0ece8;
+  color: var(--sitec-wine);
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.sitec-password-rules {
+  margin: -6px 0 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff7f7;
+  border: 1px solid rgba(124, 0, 2, 0.18);
+}
+
+.sitec-password-rules p {
+  margin: 4px 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: #b42318;
+}
+
+.sitec-password-rules p::before {
+  content: "✗ ";
+  font-weight: 900;
+}
+
+.sitec-password-rules p.ok {
+  color: #047857;
+}
+
+.sitec-password-rules p.ok::before {
+  content: "✓ ";
+}

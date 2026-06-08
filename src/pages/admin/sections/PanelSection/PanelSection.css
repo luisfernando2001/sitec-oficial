@@ -1,0 +1,1245 @@
+/* ─────────────────────────────────────────────
+   PANEL ADMINISTRATIVO SITEC
+   Estilo visual similar a Estudiante / Docente
+───────────────────────────────────────────── */
+
+.panel-section {
+  --sitec-primary: #160f63;
+  --sitec-primary-soft: #24106d;
+  --sitec-wine: #8e0d2d;
+  --sitec-wine-dark: #6f123d;
+  --sitec-gold: #f7bd38;
+  --sitec-green: #0a6e3c;
+  --sitec-bg: #f5f2f8;
+  --sitec-card: #ffffff;
+  --sitec-border: #e7deec;
+  --sitec-text: #20142f;
+  --sitec-muted: #766983;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--sitec-text);
+}
+
+/* ─────────────────────────────────────────────
+   ENCABEZADO
+───────────────────────────────────────────── */
+
+.panel-section__header {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 253, 0.96));
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  box-shadow:
+    0 14px 30px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-section__header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--sitec-primary), var(--sitec-wine));
+}
+
+.panel-section__header::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(247, 189, 56, 0.08);
+}
+
+.panel-section__header > div,
+.panel-section__actions {
+  position: relative;
+  z-index: 1;
+}
+
+.panel-section__eyebrow {
+  margin: 0 0 6px;
+  color: #c98b09;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3.4px;
+  text-transform: uppercase;
+}
+
+/* Título principal con fuente diferente */
+.panel-section__title {
+  margin: 0;
+  color: var(--sitec-primary);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.panel-section__subtitle {
+  margin: 8px 0 0;
+  color: var(--sitec-muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.panel-section__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-section__status {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #eaf7f0;
+  border: 1px solid rgba(10, 110, 60, 0.16);
+  color: var(--sitec-green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(10, 110, 60, 0.07);
+}
+
+.panel-section__status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sitec-green);
+  box-shadow: 0 0 0 4px rgba(10, 110, 60, 0.12);
+}
+
+.panel-section__refresh {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: 1px solid var(--sitec-border);
+  background: #ffffff;
+  color: #5d4a68;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.22s ease;
+  box-shadow: 0 8px 18px rgba(39, 22, 70, 0.06);
+}
+
+.panel-section__refresh:hover {
+  border-color: rgba(142, 13, 45, 0.28);
+  color: var(--sitec-wine);
+  background: #fffafd;
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   MÉTRICAS
+───────────────────────────────────────────── */
+
+.panel-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.metric-card-pro {
+  background: var(--sitec-card);
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  padding: 20px 22px;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 13px 28px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: 0.22s ease;
+}
+
+.metric-card-pro:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 36px rgba(39, 22, 70, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.metric-card-pro::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+}
+
+.metric-card-pro.primary::before {
+  background: linear-gradient(90deg, var(--sitec-primary), #2e2ab0);
+}
+
+.metric-card-pro.success::before {
+  background: linear-gradient(90deg, var(--sitec-green), #1aad62);
+}
+
+.metric-card-pro.warning::before {
+  background: linear-gradient(90deg, #c98b09, var(--sitec-gold));
+}
+
+.metric-card-pro.danger::before {
+  background: linear-gradient(90deg, var(--sitec-wine-dark), #b3122f);
+}
+
+.metric-card-pro__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* Cuadros similares a estudiante/docente */
+.metric-card-pro__icon {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  border-radius: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--sitec-primary);
+  background: #f3eff8;
+  box-shadow:
+    5px 5px 12px rgba(39, 22, 70, 0.08),
+    -3px -3px 9px rgba(255, 255, 255, 0.9);
+}
+
+.metric-card-pro.success .metric-card-pro__icon {
+  color: var(--sitec-green);
+  background: #eaf7f0;
+}
+
+.metric-card-pro.warning .metric-card-pro__icon {
+  color: #c98b09;
+  background: #fff5dd;
+}
+
+.metric-card-pro.danger .metric-card-pro__icon {
+  color: #b3122f;
+  background: #fdeaf0;
+}
+
+.panel-svg-icon,
+.metric-card-pro__icon svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.metric-card-pro__top span {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eaf7f0;
+  color: var(--sitec-green);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.metric-card-pro.warning .metric-card-pro__top span {
+  background: rgba(179, 18, 47, 0.08);
+  color: #b3122f;
+}
+
+.metric-card-pro > strong {
+  display: block;
+  color: #1a0a2e;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.7px;
+}
+
+.metric-card-pro h3 {
+  margin: 0;
+  color: #4f435c;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.metric-card-pro p {
+  margin: 7px 0 0;
+  color: var(--sitec-muted);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────────
+   CONTENEDORES
+───────────────────────────────────────────── */
+
+.panel-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.panel-card {
+  background: var(--sitec-card);
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 13px 28px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.panel-card__head {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--sitec-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: linear-gradient(180deg, #ffffff, #fbf9fd);
+}
+
+.panel-card__head h2 {
+  margin: 0;
+  color: #1a0a2e;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.panel-card__head p {
+  margin: 4px 0 0;
+  color: var(--sitec-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.panel-card__head button {
+  border: 1px solid rgba(111, 18, 61, 0.22);
+  background: #ffffff;
+  color: var(--sitec-wine-dark);
+  border-radius: 11px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px rgba(39, 22, 70, 0.05);
+  transition: 0.2s ease;
+}
+
+.panel-card__head button:hover {
+  background: rgba(111, 18, 61, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   TABLA
+───────────────────────────────────────────── */
+
+.panel-table {
+  overflow-x: auto;
+}
+
+.panel-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.panel-table thead {
+  background: linear-gradient(90deg, var(--sitec-primary), var(--sitec-primary-soft));
+}
+
+.panel-table th {
+  padding: 13px 16px;
+  color: #ffffff;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.panel-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--sitec-border);
+  color: #51465f;
+  font-size: 13px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.panel-table tbody tr {
+  transition: 0.18s ease;
+}
+
+.panel-table tbody tr:hover {
+  background: #faf8fd;
+}
+
+.panel-table td strong {
+  display: block;
+  color: #1a0a2e;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.panel-table td span {
+  color: var(--sitec-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+}
+
+.panel-badge {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(239, 180, 60, 0.15);
+  color: #c98b09 !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+}
+
+.panel-table__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.panel-table__actions button {
+  border-radius: 9px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.panel-table__actions .approve {
+  border: 1px solid rgba(10, 110, 60, 0.25);
+  background: #f7fffa;
+  color: var(--sitec-green);
+}
+
+.panel-table__actions .approve:hover {
+  background: var(--sitec-green);
+  color: #ffffff;
+}
+
+.panel-table__actions .reject {
+  border: 1px solid rgba(179, 18, 47, 0.25);
+  background: #fff8fa;
+  color: #b3122f;
+}
+
+.panel-table__actions .reject:hover {
+  background: #b3122f;
+  color: #ffffff;
+}
+
+.panel-table__empty {
+  text-align: center;
+  padding: 30px !important;
+  color: var(--sitec-muted) !important;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────
+   ACTIVIDAD RECIENTE
+───────────────────────────────────────────── */
+
+.activity-list {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--sitec-border);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Actividad un poco más pequeña que las métricas */
+.activity-item__icon {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    4px 4px 10px rgba(39, 22, 70, 0.08),
+    -3px -3px 8px rgba(255, 255, 255, 0.9);
+}
+
+.activity-item__icon svg,
+.activity-item__icon .panel-svg-icon {
+  width: 15px !important;
+  height: 15px !important;
+  stroke-width: 2;
+}
+
+.activity-item__icon.success {
+  background: #eaf7f0;
+  color: var(--sitec-green);
+}
+
+.activity-item__icon.info {
+  background: #efecf8;
+  color: var(--sitec-primary);
+}
+
+.activity-item__icon.primary {
+  background: #f2e7ee;
+  color: var(--sitec-wine-dark);
+}
+
+.activity-item__icon.warning {
+  background: #fff5d9;
+  color: #c98b09;
+}
+
+.activity-item strong {
+  display: block;
+  color: #1a0a2e;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.activity-item span {
+  display: block;
+  color: var(--sitec-muted);
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* ─────────────────────────────────────────────
+   ACCESOS RÁPIDOS
+───────────────────────────────────────────── */
+
+.quick-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.quick-action-card {
+  background: var(--sitec-card);
+  border: 1px solid var(--sitec-border);
+  border-radius: 22px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  box-shadow:
+    0 13px 28px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+  transition: 0.22s ease;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 36px rgba(39, 22, 70, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.quick-action-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sitec-primary), var(--sitec-wine));
+}
+
+/* Accesos rápidos igual que las métricas */
+.quick-action-card__icon {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  border-radius: 12px !important;
+  background: #f3eff8;
+  color: var(--sitec-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow:
+    5px 5px 12px rgba(39, 22, 70, 0.08),
+    -3px -3px 9px rgba(255, 255, 255, 0.9);
+}
+
+.quick-action-card__icon svg,
+.quick-action-card__icon .panel-svg-icon {
+  width: 18px !important;
+  height: 18px !important;
+  stroke-width: 2;
+}
+
+.quick-action-card h3 {
+  margin: 0;
+  color: #1a0a2e;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.quick-action-card p {
+  margin: 5px 0 0;
+  color: var(--sitec-muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.quick-action-card button {
+  margin-top: auto;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(130deg, var(--sitec-primary), var(--sitec-wine-dark));
+  color: #ffffff;
+  padding: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(39, 22, 70, 0.16);
+  transition: 0.2s ease;
+}
+
+.quick-action-card button:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+/* ─────────────────────────────────────────────
+   RESUMEN DEL SISTEMA
+───────────────────────────────────────────── */
+
+.system-summary {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 80px;
+  align-items: center;
+  gap: 14px;
+}
+
+.summary-row span {
+  color: #5f536f;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.summary-row strong {
+  color: #1a0a2e;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.summary-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #f0eef6;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(39, 22, 70, 0.08);
+}
+
+.summary-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.summary-bar__fill.primary {
+  background: linear-gradient(90deg, var(--sitec-primary), #2e2ab0);
+}
+
+.summary-bar__fill.success {
+  background: linear-gradient(90deg, var(--sitec-green), #1aad62);
+}
+
+.summary-bar__fill.warning {
+  background: linear-gradient(90deg, #c98b09, var(--sitec-gold));
+}
+
+.summary-bar__fill.danger {
+  background: linear-gradient(90deg, var(--sitec-wine-dark), #b3122f);
+}
+
+/* ===================================================== */
+/* RESPONSIVE - MEDIA QUERIES (SIN CAMBIAR NADA ORIGINAL) */
+/* ===================================================== */
+
+/* Pantallas muy grandes */
+@media (min-width: 1920px) {
+  .panel-section {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  
+  .panel-metrics {
+    gap: 24px;
+  }
+  
+  .metric-card-pro {
+    padding: 24px 26px;
+  }
+  
+  .metric-card-pro > strong {
+    font-size: 38px;
+  }
+}
+
+/* Escritorios grandes */
+@media (max-width: 1400px) {
+  .panel-metrics {
+    gap: 16px;
+  }
+  
+  .metric-card-pro {
+    padding: 18px 20px;
+  }
+  
+  .metric-card-pro > strong {
+    font-size: 30px;
+  }
+}
+
+/* Escritorios medianos */
+@media (max-width: 1200px) {
+  .panel-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .panel-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-panel {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .system-summary {
+    padding: 18px;
+  }
+  
+  .summary-row {
+    grid-template-columns: 130px 1fr 70px;
+    gap: 12px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .panel-section__header {
+    padding: 22px 24px;
+  }
+  
+  .panel-section__title {
+    font-size: 30px;
+  }
+  
+  .quick-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .panel-card__head {
+    padding: 15px 18px;
+    flex-wrap: wrap;
+  }
+  
+  .activity-list {
+    padding: 15px 18px;
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  .panel-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .panel-section__title {
+    font-size: 29px;
+  }
+
+  .panel-section__actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .panel-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .summary-row strong {
+    text-align: left;
+  }
+  
+  .quick-panel {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-table th,
+  .panel-table td {
+    padding: 12px;
+  }
+  
+  .panel-table td strong {
+    font-size: 12px;
+  }
+  
+  .panel-table__actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .panel-table__actions button {
+    width: 100%;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 576px) {
+  .panel-section {
+    gap: 16px;
+  }
+  
+  .panel-section__header {
+    padding: 18px;
+  }
+  
+  .panel-section__title {
+    font-size: 24px;
+  }
+  
+  .panel-section__subtitle {
+    font-size: 12px;
+  }
+  
+  .panel-section__status {
+    font-size: 11px;
+    padding: 0 12px;
+    height: 34px;
+  }
+  
+  .panel-section__refresh {
+    font-size: 11px;
+    padding: 0 14px;
+    height: 34px;
+  }
+  
+  .metric-card-pro {
+    padding: 15px 18px;
+  }
+  
+  .metric-card-pro > strong {
+    font-size: 28px;
+  }
+  
+  .metric-card-pro h3 {
+    font-size: 12px;
+  }
+  
+  .metric-card-pro p {
+    font-size: 11px;
+  }
+  
+  .panel-card__head h2 {
+    font-size: 14px;
+  }
+  
+  .panel-card__head button {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .quick-action-card {
+    padding: 16px;
+  }
+  
+  .quick-action-card h3 {
+    font-size: 14px;
+  }
+  
+  .quick-action-card p {
+    font-size: 11px;
+  }
+  
+  .quick-action-card button {
+    padding: 9px;
+    font-size: 11px;
+  }
+  
+  .system-summary {
+    padding: 16px;
+  }
+  
+  .summary-row span,
+  .summary-row strong {
+    font-size: 11px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .panel-section__title {
+    font-size: 22px;
+  }
+  
+  .panel-section__eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+  
+  .metric-card-pro > strong {
+    font-size: 25px;
+  }
+  
+  .panel-table th {
+    font-size: 9px;
+    padding: 10px 12px;
+  }
+  
+  .panel-table td {
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+  
+  .activity-item strong {
+    font-size: 12px;
+  }
+  
+  .activity-item span {
+    font-size: 10px;
+  }
+  
+  .activity-item__icon {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+  }
+}
+
+/* Orientación landscape en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+  .panel-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .quick-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .panel-layout {
+    gap: 16px;
+  }
+}
+
+/* =====================================================
+   CORRECCIÓN FINAL: TARJETAS COMPACTAS CON COLOR
+   E ÍCONOS VISIBLES - PANEL ADMIN SITEC
+   PEGAR AL FINAL DE TODO
+===================================================== */
+
+/* Mantener tarjetas horizontales compactas */
+html body #root .panel-section .panel-metrics {
+  grid-template-columns: repeat(4, minmax(190px, 1fr)) !important;
+  gap: 16px !important;
+}
+
+/* Tarjeta compacta pero con estilo */
+html body #root .panel-section .panel-metrics .metric-card-pro {
+  height: 82px !important;
+  min-height: 82px !important;
+  padding: 15px 18px !important;
+  border-radius: 13px !important;
+
+  display: grid !important;
+  grid-template-columns: 48px 1fr !important;
+  grid-template-rows: auto auto auto !important;
+  column-gap: 14px !important;
+  align-items: center !important;
+
+  background: #ffffff !important;
+  border: 1px solid #e7deec !important;
+  overflow: hidden !important;
+
+  box-shadow:
+    0 10px 24px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Recupera la línea de color superior */
+html body #root .panel-section .panel-metrics .metric-card-pro::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 4px !important;
+  border-radius: 13px 13px 0 0 !important;
+}
+
+/* Colores por tarjeta */
+html body #root .panel-section .panel-metrics .metric-card-pro.primary::before {
+  background: linear-gradient(90deg, #160f63, #2e2ab0) !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.success::before {
+  background: linear-gradient(90deg, #0a6e3c, #16a05d) !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.warning::before {
+  background: linear-gradient(90deg, #c98b09, #f7bd38) !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.danger::before {
+  background: linear-gradient(90deg, #8e0d2d, #b3122f) !important;
+}
+
+/* Ubicación del icono */
+html body #root .panel-section .panel-metrics .metric-card-pro__top {
+  grid-column: 1 !important;
+  grid-row: 1 / 4 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Cuadro del icono: pequeño pero visible */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon {
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  max-height: 46px !important;
+
+  border-radius: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-shadow:
+    0 8px 18px rgba(39, 22, 70, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Icono interno más grande */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon {
+  width: 29px !important;
+  height: 29px !important;
+  min-width: 29px !important;
+  min-height: 29px !important;
+  max-width: 29px !important;
+  max-height: 29px !important;
+  stroke-width: 2.1 !important;
+}
+
+/* Fuerza los trazos del SVG */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon path,
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon circle {
+  stroke: currentColor !important;
+  vector-effect: non-scaling-stroke !important;
+}
+
+/* Fondo del cuadro por tipo */
+html body #root .panel-section .panel-metrics .metric-card-pro.primary .metric-card-pro__icon {
+  background: #f1edf8 !important;
+  color: #160f63 !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.success .metric-card-pro__icon {
+  background: #e5f7ee !important;
+  color: #0a6e3c !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.warning .metric-card-pro__icon {
+  background: #fff1cc !important;
+  color: #c98b09 !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro.danger .metric-card-pro__icon {
+  background: #fde5ed !important;
+  color: #b3122f !important;
+}
+
+/* Texto al lado del icono */
+html body #root .panel-section .panel-metrics .metric-card-pro > strong {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  margin: 0 0 2px !important;
+
+  font-size: 25px !important;
+  line-height: 1 !important;
+  font-weight: 750 !important;
+  color: #160f63 !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro h3 {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  margin: 0 !important;
+
+  font-size: 12.5px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  color: #3f3150 !important;
+}
+
+html body #root .panel-section .panel-metrics .metric-card-pro p {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  margin: 2px 0 0 !important;
+
+  font-size: 10.8px !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  color: #7a6a8a !important;
+}
+
+/* Responsive para las correcciones */
+@media (max-width: 1200px) {
+  html body #root .panel-section .panel-metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  html body #root .panel-section .panel-metrics {
+    grid-template-columns: 1fr !important;
+  }
+  
+  html body #root .panel-section .panel-metrics .metric-card-pro {
+    height: auto !important;
+    min-height: 82px !important;
+  }
+}
+
+/* =====================================================
+   AGRANDAR SOLO LOS ÍCONOS INTERNOS DE LAS MÉTRICAS
+   Similar al tamaño visual de la barra lateral
+   Pegar al FINAL de PanelSection.css
+===================================================== */
+
+/* Mantiene el cuadro compacto */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon {
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  max-width: 46px !important;
+  max-height: 46px !important;
+  border-radius: 12px !important;
+}
+
+/* Agranda el icono interno */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  max-width: 34px !important;
+  max-height: 34px !important;
+  stroke-width: 2 !important;
+}
+
+/* Asegura que el trazo se vea bien */
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon path,
+html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon circle {
+  stroke: currentColor !important;
+  vector-effect: non-scaling-stroke !important;
+}
+
+/* Responsive adicional para los íconos en móviles */
+@media (max-width: 768px) {
+  html body #root .panel-section .panel-metrics .metric-card-pro__icon {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+  }
+  
+  html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body #root .panel-section .panel-metrics .metric-card-pro__icon {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+  
+  html body #root .panel-section .panel-metrics .metric-card-pro__icon > svg.panel-svg-icon {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+  }
+}
