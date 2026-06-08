@@ -2074,3 +2074,112 @@
     transform: none;
   }
 }
+/* ─────────────────────────────────────────────
+   RESPONSIVE - GESTIÓN DE RECURSOS ADMIN
+───────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .libros-section,
+  .gestion-libros-section,
+  .recursos-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+  }
+
+  .libros-header,
+  .gestion-libros-header,
+  .recursos-header {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  .libros-header h1,
+  .gestion-libros-header h1,
+  .recursos-header h1 {
+    font-size: 25px !important;
+    line-height: 1.1 !important;
+    word-break: normal !important;
+  }
+
+  .libros-header p,
+  .gestion-libros-header p,
+  .recursos-header p {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  .libros-header__actions,
+  .gestion-libros-header__actions,
+  .recursos-header__actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .libros-header__actions button,
+  .gestion-libros-header__actions button,
+  .recursos-header__actions button {
+    width: 100% !important;
+  }
+
+  .libros-stats,
+  .libros-metrics,
+  .gestion-libros-stats,
+  .gestion-libros-metrics,
+  .recursos-stats,
+  .recursos-metrics {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .libros-tools,
+  .gestion-libros-tools,
+  .recursos-tools {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .libros-tools input,
+  .libros-tools select,
+  .gestion-libros-tools input,
+  .gestion-libros-tools select,
+  .recursos-tools input,
+  .recursos-tools select {
+    width: 100% !important;
+  }
+
+  .libros-table-card,
+  .gestion-libros-table-card,
+  .recursos-table-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+  }
+
+  .libros-table-wrap,
+  .gestion-libros-table-wrap,
+  .recursos-table-wrap {
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .libros-table,
+  .gestion-libros-table,
+  .recursos-table {
+    min-width: 760px !important;
+  }
+}
