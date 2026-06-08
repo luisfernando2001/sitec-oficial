@@ -6,7 +6,7 @@ import "./login.css";
 import logoUMSA from "../assets/logo_umsa.png";
 import logoTec from "../assets/logo_tecnologia.png";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 function generarCodigoCaptcha() {
   /*

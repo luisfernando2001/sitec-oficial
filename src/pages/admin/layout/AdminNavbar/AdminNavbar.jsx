@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminNavbar.css";
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = "http://localhost:4000";
 
 function obtenerUsuarioGuardado() {
   try {

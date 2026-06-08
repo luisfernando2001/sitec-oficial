@@ -5,7 +5,7 @@ import DetalleRecurso from "./DetalleRecurso";
 
 const API_URL     = import.meta.env.VITE_API_URL || "http://localhost/sitec/api";
 const BACKEND_URL = "http://localhost/sitec";
-const PROXY_URL   = "http://localhost:3000/pdf-proxy";
+const PROXY_URL   = "http://localhost:4000/pdf-proxy";
 
 // ── helpers ──────────────────────────────────────────────────
 const norm = (v) => String(v || "").toLowerCase().trim();

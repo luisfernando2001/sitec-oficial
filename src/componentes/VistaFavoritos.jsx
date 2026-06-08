@@ -22,7 +22,7 @@ function formatearFecha(fecha) {
 
 function adaptarFavorito(item) {
   const archivo = item.archivo_digital
-    ? `http://localhost:3000/${item.archivo_digital}`
+    ? `http://localhost:4000/${item.archivo_digital}`
     : null;
 
   return {

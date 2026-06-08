@@ -19,7 +19,7 @@ import VistaPerfil from "../componentes/VistaPerfil";
 import VistaConfiguracion from "../componentes/VistaConfiguracion";
 import AsistenteIA from "../componentes/AsistenteIA";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 function obtenerUsuarioGuardado() {
   try {

@@ -3,7 +3,7 @@ import "../styles/vistas.css";
 
 import sinPerfil from "../assets/sin_perfil.png";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 function obtenerUsuarioGuardado() {
   try {

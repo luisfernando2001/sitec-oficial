@@ -7,7 +7,7 @@ import {
 } from "../services/api";
 
 const BACKEND_URL = "http://localhost/sitec";
-const PROXY_URL   = "http://localhost:3000/pdf-proxy";
+const PROXY_URL   = "http://localhost:4000/pdf-proxy";
 
 function obtenerUrlArchivo(recurso) {
   if (!recurso?.archivo_digital) return null;

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./NotificacionesSection.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 function normalizarTexto(texto) {
   return String(texto || "")

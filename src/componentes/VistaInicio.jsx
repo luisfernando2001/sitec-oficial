@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/vistas.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 
 function formatearFechaHora(fecha) {
   if (!fecha) return "Sin fecha";

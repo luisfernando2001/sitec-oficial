@@ -3,7 +3,7 @@ import "../admin/sections/GestionLibrosSection/GestionLibrosSection.css";
 import { obtenerLibrosGestor, crearLibroGestor, actualizarLibroGestor } from "../../services/librosGestorService";
 
 
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = "http://localhost:4000";
 
 const formularioInicial = {
   titulo: "",
@@ -418,7 +418,7 @@ const idCarreraGestor = Number(
                         <button
                           type="button"
                           className="recurso-btn secondary"
-                          onClick={() => window.open(`http://localhost:3000/pdf-proxy?archivo=${encodeURIComponent(libro.archivo_digital?.replace(/\\/g, "/").replace(/^\/+/, ""))}`, "_blank")}
+                          onClick={() => window.open(`http://localhost:4000/pdf-proxy?archivo=${encodeURIComponent(libro.archivo_digital?.replace(/\\/g, "/").replace(/^\/+/, ""))}`, "_blank")}
                         >
                           Ver
                         </button>

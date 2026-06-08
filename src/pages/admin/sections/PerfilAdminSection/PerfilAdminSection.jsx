@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./PerfilAdminSection.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
 const BACKEND_URL =
   import.meta.env.VITE_BACKEND_URL || API_URL.replace("/api", "");
 

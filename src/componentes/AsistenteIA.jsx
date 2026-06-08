@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import "../styles/asistenteIA.css";
 import botIA from "../assets/bot.png";
-const API = "http://localhost:3000/api/asistente";
+const API = "http://localhost:4000/api/asistente";
 
 export default function AsistenteIA() {
   const [abierto, setAbierto] = useState(false);
@@ -129,7 +129,7 @@ export default function AsistenteIA() {
                               <button
                                 onClick={() => {
   const ruta = r.archivo_digital?.replace(/\\/g, "/").replace(/^\/+/, "");
-  window.open(`http://localhost:3000/pdf-proxy?archivo=${encodeURIComponent(ruta)}`, "_blank");
+  window.open(`http://localhost:4000/pdf-proxy?archivo=${encodeURIComponent(ruta)}`, "_blank");
 }}
                                 
                               >
