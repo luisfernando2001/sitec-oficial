@@ -23,6 +23,9 @@
   gap: 22px;
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
   color: var(--sitec-text);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .solicitudes-section::before {
@@ -785,11 +788,11 @@
   font-weight: 400;
 }
 
-/* ===================================================== */
-/* RESPONSIVE - MEDIA QUERIES (SIN CAMBIAR NADA ORIGINAL) */
-/* ===================================================== */
+/* =====================================================
+   RESPONSIVE COMPLETO - CORREGIDO Y APLICADO
+===================================================== */
 
-/* Pantallas muy grandes */
+/* Pantallas muy grandes (1920px+) */
 @media (min-width: 1920px) {
   .solicitudes-section {
     max-width: 1800px;
@@ -810,7 +813,7 @@
   }
 }
 
-/* Escritorios grandes */
+/* Escritorios grandes (1400px - 1920px) */
 @media (max-width: 1400px) {
   .solicitudes-metrics {
     gap: 16px;
@@ -825,7 +828,7 @@
   }
 }
 
-/* Escritorios medianos */
+/* Escritorios medianos (1250px - 1400px) */
 @media (max-width: 1250px) {
   .solicitudes-metrics {
     grid-template-columns: repeat(2, 1fr);
@@ -844,7 +847,7 @@
   }
 }
 
-/* Tablets */
+/* Tablets (992px - 1250px) */
 @media (max-width: 992px) {
   .solicitudes-header {
     padding: 22px 24px;
@@ -886,12 +889,21 @@
   }
 }
 
-/* Tablets pequeñas */
+/* Tablets pequeñas y móviles grandes (768px - 992px) */
 @media (max-width: 768px) {
+  .solicitudes-section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    gap: 16px;
+  }
+
   .solicitudes-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
+    padding: 20px;
+    border-radius: 18px;
   }
 
   .solicitudes-header h1 {
@@ -933,12 +945,16 @@
   .detail-list div {
     padding: 10px 12px;
   }
+  
+  .solicitudes-layout {
+    gap: 16px;
+  }
 }
 
-/* Móviles grandes */
+/* Móviles grandes (576px - 768px) */
 @media (max-width: 576px) {
   .solicitudes-section {
-    gap: 16px;
+    gap: 14px;
   }
   
   .solicitudes-header {
@@ -1002,6 +1018,15 @@
     font-size: 14px;
   }
   
+  .solicitudes-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .solicitudes-table {
+    min-width: 650px;
+  }
+  
   .solicitudes-table th {
     font-size: 9px;
     padding: 10px;
@@ -1056,7 +1081,7 @@
   }
 }
 
-/* Móviles pequeños */
+/* Móviles pequeños (480px - 576px) */
 @media (max-width: 480px) {
   .solicitudes-header h1 {
     font-size: 22px;
@@ -1103,6 +1128,12 @@
   .solicitudes-table th {
     font-size: 8px;
     letter-spacing: 1px;
+    padding: 8px;
+  }
+  
+  .solicitudes-table td {
+    padding: 8px;
+    font-size: 10px;
   }
   
   .btn-view,
@@ -1110,6 +1141,48 @@
   .btn-reject {
     font-size: 10px;
     padding: 6px 10px;
+  }
+  
+  .solicitudes-card-head h2::before,
+  .solicitud-detail__head h2::before {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Móviles muy pequeños (hasta 380px) */
+@media (max-width: 380px) {
+  .solicitudes-header h1 {
+    font-size: 20px;
+  }
+  
+  .solicitud-metric {
+    grid-template-columns: 36px 1fr;
+    column-gap: 10px;
+  }
+  
+  .solicitud-metric strong {
+    font-size: 18px;
+  }
+  
+  .solicitud-metric__icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+  }
+  
+  .solicitud-metric__icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .solicitud-metric h3 {
+    font-size: 10px;
+  }
+  
+  .solicitud-metric p {
+    font-size: 9px;
   }
 }
 
@@ -1135,12 +1208,15 @@
   .solicitudes-actions button {
     width: auto;
   }
+  
+  .solicitudes-table {
+    min-width: 700px;
+  }
 }
 
 /* =====================================================
    MEJORA VISUAL EXTRA - SOLICITUDES
    Rectángulos con más estilo + lista más profesional
-   PEGAR AL FINAL DEL CSS
 ===================================================== */
 
 /* Fondo general con detalle visual suave */
@@ -1567,13 +1643,9 @@
 /* =====================================================
    CORRECCIÓN VISUAL FINAL - SOLICITUDES SITEC
    Métricas con color + botón actualizar + ver archivo
-   PEGAR AL FINAL DE TODO EL CSS
 ===================================================== */
 
-/* =====================================================
-   MÉTRICAS: RECTÁNGULOS COMPACTOS CON COLOR
-===================================================== */
-
+/* MÉTRICAS: RECTÁNGULOS COMPACTOS CON COLOR */
 .solicitudes-section .solicitudes-metrics {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(190px, 1fr)) !important;
@@ -1729,22 +1801,7 @@
   stroke: currentColor !important;
 }
 
-/* Si en tu JSX NO existe el div del icono, crea un cuadro visual antes del título */
-.solicitudes-section .solicitud-metric:not(:has(.solicitud-metric__icon)) h3::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 18px !important;
-  top: 24px !important;
-  width: 48px !important;
-  height: 48px !important;
-  border-radius: 14px !important;
-  background: #f1edf8 !important;
-  box-shadow:
-    0 10px 20px rgba(39, 22, 70, 0.11),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Corrige texto: que no se pegue como Total0 */
+/* Corrige texto */
 .solicitudes-section .solicitud-metric strong {
   grid-column: 2 !important;
   grid-row: 1 !important;
@@ -1794,11 +1851,7 @@
   z-index: 3 !important;
 }
 
-/* =====================================================
-   BOTÓN ACTUALIZAR
-===================================================== */
-
-/* Si el botón está dentro de herramientas/filtros */
+/* BOTÓN ACTUALIZAR */
 .solicitudes-section .solicitudes-tools button,
 .solicitudes-section button.btn-actualizar,
 .solicitudes-section button.actualizar,
@@ -1807,25 +1860,16 @@
   height: 46px !important;
   min-height: 46px !important;
   border: none !important;
-  border-radius: 0 !important;
+  border-radius: 14px !important;
   padding: 0 22px !important;
-
   background: linear-gradient(135deg, #160f63 0%, #24106d 45%, #6f123d 100%) !important;
   color: #ffffff !important;
-
   font-size: 13px !important;
   font-weight: 650 !important;
   font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
-
   cursor: pointer !important;
-  box-shadow:
-    0 10px 22px rgba(22, 15, 99, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease !important;
+  box-shadow: 0 10px 22px rgba(22, 15, 99, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
 }
 
 .solicitudes-section .solicitudes-tools button:hover,
@@ -1835,20 +1879,10 @@
 .solicitudes-section .solicitudes-refresh:hover {
   transform: translateY(-1px) !important;
   filter: brightness(1.07) !important;
-  box-shadow:
-    0 14px 28px rgba(22, 15, 99, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 14px 28px rgba(22, 15, 99, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
 }
 
-/* Si quieres que sea redondeado, cambia arriba border-radius: 0 por esto:
-   border-radius: 14px !important;
-*/
-
-/* =====================================================
-   BOTÓN VER ARCHIVO
-===================================================== */
-
-/* Links o botones de archivo dentro de la tabla */
+/* BOTÓN VER ARCHIVO */
 .solicitudes-section .solicitudes-table td a,
 .solicitudes-section .solicitudes-table .btn-archivo,
 .solicitudes-section .solicitudes-table .archivo-link,
@@ -1858,29 +1892,17 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-
   padding: 7px 13px !important;
   border-radius: 11px !important;
   border: 1px solid rgba(22, 15, 99, 0.18) !important;
-
-  background:
-    linear-gradient(180deg, #ffffff, #faf8fd) !important;
+  background: linear-gradient(180deg, #ffffff, #faf8fd) !important;
   color: #160f63 !important;
-
   font-size: 11.5px !important;
   font-weight: 650 !important;
   font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
   text-decoration: none !important;
-
-  box-shadow:
-    0 7px 16px rgba(39, 22, 70, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-
-  transition:
-    transform 0.18s ease,
-    background 0.18s ease,
-    color 0.18s ease,
-    box-shadow 0.18s ease !important;
+  box-shadow: 0 7px 16px rgba(39, 22, 70, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease !important;
 }
 
 .solicitudes-section .solicitudes-table td a:hover,
@@ -1891,14 +1913,10 @@
   background: linear-gradient(135deg, #160f63, #6f123d) !important;
   color: #ffffff !important;
   transform: translateY(-1px) !important;
-  box-shadow:
-    0 10px 22px rgba(22, 15, 99, 0.18) !important;
+  box-shadow: 0 10px 22px rgba(22, 15, 99, 0.18) !important;
 }
 
-/* =====================================================
-   BOTÓN VERSIÓN / VER DETALLE
-===================================================== */
-
+/* BOTÓN VERSIÓN / VER DETALLE */
 .solicitudes-section .solicitudes-table .btn-view,
 .solicitudes-section .solicitudes-table button {
   border-radius: 11px !important;
@@ -1910,6 +1928,7 @@
   width: 100% !important;
 }
 
+/* MODALES */
 .solicitudes-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1937,7 +1956,6 @@
     opacity: 0;
     transform: translateY(18px) scale(0.98);
   }
-
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -2179,92 +2197,23 @@
   .solicitudes-rechazo-alert span {
     font-size: 12px;
   }
-}/* ─────────────────────────────────────────────
-   RESPONSIVE - SOLICITUDES ADMIN
-───────────────────────────────────────────── */
+}
 
-@media (max-width: 760px) {
-  .solicitudes-section {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    padding: 0 !important;
-  }
-
-  .solicitudes-header {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 22px 18px !important;
-    border-radius: 18px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 14px !important;
-  }
-
-  .solicitudes-header h1 {
-    font-size: 25px !important;
-    line-height: 1.1 !important;
-  }
-
-  .solicitudes-header p {
-    font-size: 13px !important;
-    line-height: 1.45 !important;
-  }
-
-  .solicitudes-badge,
-  .solicitudes-header__badge {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  .solicitudes-metrics,
-  .solicitudes-stats {
-    width: 100% !important;
-    display: grid !important;
+/* Responsive para métricas en dispositivos pequeños (sobrescribe grid) */
+@media (max-width: 768px) {
+  .solicitudes-section .solicitudes-metrics {
     grid-template-columns: 1fr !important;
-    gap: 14px !important;
   }
+}
 
-  .solicitudes-tools,
-  .solicitudes-filters {
-    width: 100% !important;
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
+@media (min-width: 769px) and (max-width: 1250px) {
+  .solicitudes-section .solicitudes-metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
+}
 
-  .solicitudes-tools input,
-  .solicitudes-tools select,
-  .solicitudes-filters input,
-  .solicitudes-filters select,
-  .solicitudes-tools button,
-  .solicitudes-filters button {
-    width: 100% !important;
-  }
-
-  .solicitudes-layout {
-    width: 100% !important;
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  .solicitudes-card,
-  .solicitudes-table-card,
-  .solicitudes-detail {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    border-radius: 16px !important;
-  }
-
-  .solicitudes-table-wrap {
-    width: 100% !important;
-    overflow-x: auto !important;
-  }
-
-  .solicitudes-table {
-    min-width: 760px !important;
+@media (min-width: 1251px) {
+  .solicitudes-section .solicitudes-metrics {
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 }
