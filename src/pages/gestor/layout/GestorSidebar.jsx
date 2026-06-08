@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../admin/layout/AdminSidebar/AdminSidebar.css";
 
@@ -5,9 +6,10 @@ const sidebarGroups = [
   {
     title: "Principal",
     items: [
-      { label: "Panel",              value: "Panel",         icon: "panel" },
+      { label: "Panel", value: "Panel", icon: "panel" },
       { label: "Gestionar Recursos", value: "GestionLibros", icon: "books" },
-      { label: "Solicitudes",        value: "Solicitudes",   icon: "requests" },
+      { label: "Solicitudes", value: "Solicitudes", icon: "requests" },
+      { label: "Usuarios", value: "Usuarios", icon: "users" },
     ],
   },
   {
@@ -29,7 +31,9 @@ function obtenerUsuarioGuardado() {
 
 function obtenerNombre(usuario) {
   if (!usuario) return "Gestor SITEC";
+
   const nombreCompleto = `${usuario.nombre || ""} ${usuario.apellido || ""}`.trim();
+
   return nombreCompleto || usuario.nombre_usuario || "Gestor SITEC";
 }
 
@@ -44,59 +48,107 @@ function obtenerInicial(nombre) {
 function GestorSidebar({ activeModule, onNavigate, solicitudesCount = 0 }) {
   const navigate = useNavigate();
 
-  const usuario       = obtenerUsuarioGuardado();
+  const [menuMovilAbierto, setMenuMovilAbierto] = useState(false);
+
+  const usuario = obtenerUsuarioGuardado();
   const nombreUsuario = obtenerNombre(usuario);
   const correoUsuario = obtenerCorreo(usuario);
-  const inicial       = obtenerInicial(nombreUsuario);
+  const inicial = obtenerInicial(nombreUsuario);
+
+  const cerrarMenuMovil = () => {
+    setMenuMovilAbierto(false);
+  };
+
+  const navegarModulo = (modulo) => {
+    onNavigate(modulo);
+    cerrarMenuMovil();
+  };
 
   const cerrarSesion = () => {
+    cerrarMenuMovil();
     localStorage.clear();
     sessionStorage.clear();
     navigate("/");
   };
 
   return (
-    <aside className="admin-sidebar">
-      <div className="admin-sidebar__content">
+    <>
+      <button
+        type="button"
+        className="admin-sidebar-mobile-toggle"
+        onClick={() => setMenuMovilAbierto(true)}
+        aria-label="Abrir menú"
+        title="Abrir menú"
+      >
+        ☰
+      </button>
 
-        {sidebarGroups.map((group) => (
-          <div className="admin-sidebar__group" key={group.title}>
-            <p className="admin-sidebar__title">{group.title}</p>
+      {menuMovilAbierto && (
+        <button
+          type="button"
+          className="admin-sidebar-mobile-backdrop"
+          onClick={cerrarMenuMovil}
+          aria-label="Cerrar menú"
+        />
+      )}
 
-            <div className="admin-sidebar__items">
-              {group.items.map((item) => {
-                const isActive = activeModule === item.value;
-                const mostrarBadge = item.value === "Solicitudes" && solicitudesCount > 0;
+      <aside
+        className={`admin-sidebar ${
+          menuMovilAbierto ? "admin-sidebar-open" : ""
+        }`}
+      >
+        <div className="admin-sidebar__content">
+          {sidebarGroups.map((group) => (
+            <div className="admin-sidebar__group" key={group.title}>
+              <p className="admin-sidebar__title">{group.title}</p>
 
-                return (
-                  <button
-                    key={item.value}
-                    type="button"
-                    className={`admin-sidebar__item ${isActive ? "active" : ""}`}
-                    onClick={() => onNavigate(item.value)}
-                  >
-                    <span className={`admin-sidebar__icon icon-${item.icon}`}></span>
-                    <span className="admin-sidebar__label">{item.label}</span>
-                    {mostrarBadge && (
-                      <span className="admin-sidebar__counter warning">
-                        {solicitudesCount}
+              <div className="admin-sidebar__items">
+                {group.items.map((item) => {
+                  const isActive = activeModule === item.value;
+                  const mostrarBadge =
+                    item.value === "Solicitudes" && solicitudesCount > 0;
+
+                  return (
+                    <button
+                      key={item.value}
+                      type="button"
+                      className={`admin-sidebar__item ${
+                        isActive ? "active" : ""
+                      }`}
+                      onClick={() => navegarModulo(item.value)}
+                    >
+                      <span
+                        className={`admin-sidebar__icon icon-${item.icon}`}
+                      ></span>
+
+                      <span className="admin-sidebar__label">
+                        {item.label}
                       </span>
-                    )}
-                  </button>
-                );
-              })}
+
+                      {mostrarBadge && (
+                        <span className="admin-sidebar__counter warning">
+                          {solicitudesCount}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+          ))}
+
+          <div className="admin-sidebar__footer">
+            <button
+              type="button"
+              className="admin-sidebar__logout"
+              onClick={cerrarSesion}
+            >
+              Cerrar sesión
+            </button>
           </div>
-        ))}
-
-        <div className="admin-sidebar__footer">
-          <button type="button" className="admin-sidebar__logout" onClick={cerrarSesion}>
-            Cerrar sesión
-          </button>
         </div>
-
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 }
 

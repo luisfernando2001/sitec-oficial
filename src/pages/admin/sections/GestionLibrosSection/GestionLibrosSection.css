@@ -23,6 +23,9 @@
   gap: 22px;
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
   color: var(--sitec-text);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .gestion-libros::before {
@@ -342,7 +345,6 @@
 }
 
 /* Iconos CSS dentro del cuadro */
-
 .books-metric-card__icon::before,
 .books-metric-card__icon::after {
   content: "";
@@ -689,7 +691,6 @@
 }
 
 /* Badges */
-
 .badge {
   min-height: 24px;
   display: inline-flex;
@@ -734,7 +735,6 @@
 }
 
 /* Acciones tabla */
-
 .table-actions {
   display: flex;
   justify-content: flex-start;
@@ -912,7 +912,6 @@
 }
 
 /* Campo archivo */
-
 .book-file-field {
   position: relative;
 }
@@ -967,7 +966,6 @@
 }
 
 /* Toast */
-
 .book-toast {
   position: fixed;
   left: 50%;
@@ -1304,7 +1302,7 @@
 }
 
 /* ===================================================== */
-/* RESPONSIVE COMPLETO - MEDIA QUERIES MEJORADAS */
+/* RESPONSIVE COMPLETO - CORREGIDO Y APLICADO */
 /* ===================================================== */
 
 /* Pantallas muy grandes (1920px+) */
@@ -1406,11 +1404,18 @@
 
 /* Tablets (768px - 992px) */
 @media (max-width: 991px) {
+  .gestion-libros {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   .gestion-libros__header {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
     padding: 20px;
+    border-radius: 18px;
   }
 
   .gestion-libros__header-actions {
@@ -1483,6 +1488,9 @@
 /* Móviles grandes (576px - 768px) */
 @media (max-width: 767px) {
   .gestion-libros {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     gap: 16px;
   }
 
@@ -1543,6 +1551,7 @@
     min-height: 40px;
   }
   
+  /* Ajuste de iconos CSS para móviles */
   .books-metric-card__icon.icon-books::before {
     left: 9px;
     top: 9px;
@@ -2074,23 +2083,21 @@
     transform: none;
   }
 }
-/* ─────────────────────────────────────────────
-   RESPONSIVE - GESTIÓN DE RECURSOS ADMIN
-───────────────────────────────────────────── */
+
+/* ===================================================== */
+/* CORRECCIÓN FINAL - RESPONSIVE PARA TODOS LOS ELEMENTOS */
+/* ===================================================== */
 
 @media (max-width: 760px) {
-  .libros-section,
-  .gestion-libros-section,
-  .recursos-section {
+  /* Contenedor principal */
+  .gestion-libros {
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: hidden !important;
-    padding: 0 !important;
   }
 
-  .libros-header,
-  .gestion-libros-header,
-  .recursos-header {
+  /* Encabezado */
+  .gestion-libros__header {
     width: 100% !important;
     max-width: 100% !important;
     padding: 22px 18px !important;
@@ -2101,85 +2108,104 @@
     gap: 16px !important;
   }
 
-  .libros-header h1,
-  .gestion-libros-header h1,
-  .recursos-header h1 {
+  .gestion-libros__title {
     font-size: 25px !important;
     line-height: 1.1 !important;
     word-break: normal !important;
   }
 
-  .libros-header p,
-  .gestion-libros-header p,
-  .recursos-header p {
+  .gestion-libros__subtitle {
     font-size: 13px !important;
     line-height: 1.45 !important;
   }
 
-  .libros-header__actions,
-  .gestion-libros-header__actions,
-  .recursos-header__actions {
+  .gestion-libros__header-actions {
     width: 100% !important;
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 10px !important;
   }
 
-  .libros-header__actions button,
-  .gestion-libros-header__actions button,
-  .recursos-header__actions button {
+  .gestion-libros__header-actions button {
     width: 100% !important;
   }
 
-  .libros-stats,
-  .libros-metrics,
-  .gestion-libros-stats,
-  .gestion-libros-metrics,
-  .recursos-stats,
-  .recursos-metrics {
+  /* Métricas */
+  .gestion-libros__metrics {
     width: 100% !important;
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 14px !important;
   }
 
-  .libros-tools,
-  .gestion-libros-tools,
-  .recursos-tools {
+  /* Filtros */
+  .gestion-libros__filters {
     width: 100% !important;
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 10px !important;
   }
 
-  .libros-tools input,
-  .libros-tools select,
-  .gestion-libros-tools input,
-  .gestion-libros-tools select,
-  .recursos-tools input,
-  .recursos-tools select {
+  .search-box,
+  .gestion-libros__filters select {
     width: 100% !important;
   }
 
-  .libros-table-card,
-  .gestion-libros-table-card,
-  .recursos-table-card {
+  /* Tabla */
+  .gestion-libros__table-card {
     width: 100% !important;
     max-width: 100% !important;
     overflow: hidden !important;
     border-radius: 16px !important;
   }
 
-  .libros-table-wrap,
-  .gestion-libros-table-wrap,
-  .recursos-table-wrap {
+  .gestion-libros__table-wrap {
     width: 100% !important;
     overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
-  .libros-table,
-  .gestion-libros-table,
-  .recursos-table {
+  .gestion-libros__table {
     min-width: 760px !important;
+  }
+  
+  /* Catálogo de recursos */
+  .catalogo-card-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .recursos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .recurso-card {
+    max-width: 100% !important;
+  }
+  
+  /* Modal */
+  .book-modal-backdrop {
+    padding: 16px !important;
+  }
+  
+  .book-modal {
+    width: calc(100% - 32px) !important;
+    max-width: calc(100% - 32px) !important;
+  }
+}
+
+/* Ajuste para tablets en modo landscape */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+  .gestion-libros__metrics {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .gestion-libros__filters {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .recursos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
   }
 }
