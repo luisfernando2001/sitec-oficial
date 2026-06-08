@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./pages/login.jsx";
+import Login from "./pages/Login.jsx";
 import DashboardEstDoc from "./pages/DashboardEstDoc";
 import MisSolicitudes from "./pages/MisSolicitudes";
 import SugerirLibro from "./pages/SugerirLibro";

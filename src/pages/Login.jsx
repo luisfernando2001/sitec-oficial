@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./login.css";
+import "./Login.css";
 
 import logoUMSA from "../assets/logo_umsa.png";
 import logoTec from "../assets/logo_tecnologia.png";
