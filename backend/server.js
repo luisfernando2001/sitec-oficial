@@ -14,7 +14,109 @@ app.use(express.urlencoded({ extended: true }));
 
 /* ARCHIVOS ESTÁTICOS */
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.get("/debug-reset-admin-sitec-2026", async (req, res) => {
+  try {
+    const mysql = require("mysql2/promise");
+    const bcrypt = require("bcryptjs");
 
+    const conn = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      port: Number(process.env.DB_PORT || 3306),
+      ssl: { rejectUnauthorized: false },
+    });
+
+    const [[rolAdmin]] = await conn.query(`
+      SELECT id_rol
+      FROM rol
+      WHERE nombre_rol = 'Administrador'
+      LIMIT 1
+    `);
+
+    if (!rolAdmin) {
+      await conn.end();
+      return res.status(500).json({
+        ok: false,
+        mensaje: "No existe el rol Administrador",
+      });
+    }
+
+    const passwordHash = await bcrypt.hash("Admin12", 10);
+
+    const [usuarios] = await conn.query(`
+      SELECT id_usuario
+      FROM usuario
+      WHERE correo = 'adminsitec@umsa.bo'
+         OR correo = 'adminsitec@fatec.edu.bo'
+         OR correo LIKE '%adminsitec%'
+      LIMIT 1
+    `);
+
+    if (usuarios.length > 0) {
+      await conn.query(
+        `
+        UPDATE usuario
+        SET
+          id_rol = ?,
+          correo = 'adminsitec@umsa.bo',
+          contrasena = ?,
+          estado = 1,
+          debe_cambiar_password = 0
+        WHERE id_usuario = ?
+        `,
+        [rolAdmin.id_rol, passwordHash, usuarios[0].id_usuario]
+      );
+
+      await conn.end();
+
+      return res.json({
+        ok: true,
+        mensaje: "Admin actualizado correctamente",
+        usuario: "adminsitec",
+        password: "Admin12",
+      });
+    }
+
+    await conn.query(
+      `
+      INSERT INTO usuario (
+        id_rol,
+        id_carrera,
+        nombre,
+        apellido,
+        carnet,
+        registro_universitario,
+        correo,
+        contrasena,
+        debe_cambiar_password,
+        estado,
+        fecha_registro
+      )
+      VALUES (?, NULL, 'Administrador', 'SITEC', '999999', 'ADMIN001', 'adminsitec@umsa.bo', ?, 0, 1, NOW())
+      `,
+      [rolAdmin.id_rol, passwordHash]
+    );
+
+    await conn.end();
+
+    return res.json({
+      ok: true,
+      mensaje: "Admin creado correctamente",
+      usuario: "adminsitec",
+      password: "Admin12",
+    });
+  } catch (error) {
+    console.error("Error debug reset admin:", error);
+
+    return res.status(500).json({
+      ok: false,
+      mensaje: "Error al resetear admin",
+      error: error.message,
+    });
+  }
+});
 /* RUTA BASE */
 app.get("/", (req, res) => {
   res.json({
