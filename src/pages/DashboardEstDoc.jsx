@@ -19,7 +19,13 @@ import VistaPerfil from "../componentes/VistaPerfil";
 import VistaConfiguracion from "../componentes/VistaConfiguracion";
 import AsistenteIA from "../componentes/AsistenteIA";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "https://sitec-backend-qpdw.onrender.com/api"
+)
+  .replace("VITE_API_URL=", "")
+  .trim()
+  .replace(/\/$/, "");
 
 function obtenerUsuarioGuardado() {
   try {
