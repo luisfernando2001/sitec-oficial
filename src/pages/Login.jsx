@@ -5,8 +5,13 @@ import "./Login.css";
 
 import logoUMSA from "../assets/logo_umsa.png";
 import logoTec from "../assets/logo_tecnologia.png";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000/api";
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "https://sitec-backend-qpdw.onrender.com/api"
+)
+  .replace("VITE_API_URL=", "")
+  .trim()
+  .replace(/\/$/, "");
 
 function generarCodigoCaptcha() {
   /*
